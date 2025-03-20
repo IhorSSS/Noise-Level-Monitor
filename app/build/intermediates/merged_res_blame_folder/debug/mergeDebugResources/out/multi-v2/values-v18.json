@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.app.noiselevelmonitor.app-mergeDebugResources-30:/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "/Users/IS/.gradle/caches/8.11.1/transforms/5cecf1123265ddd02dc92cd0d07d494c/transformed/appcompat-1.6.1/res/values-v18/values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}

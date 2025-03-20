@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Non-translatable strings -->
+    <string name="app_name">Noise Level Monitor</string>
+    
+    <!-- Format strings -->
+    <string name="noise_level_format">%.1f dB</string>
+    <string name="noise_level_placeholder">0.0 dB</string>
+    <string name="min_noise_label">Min: %.1f</string>
+    <string name="avg_noise_label">Avg: %.1f</string>
+    <string name="max_noise_label">Max: %.1f</string>
+    <string name="notification_noise_level">Noise Level (dB): %.1f</string>
+    <string name="min_noise_time_format">Minimum noise level (%1$.1f dB) was recorded at %2$s</string>
+    <string name="max_noise_time_format">Maximum noise level (%1$.1f dB) was recorded at %2$s</string>
+    
+    <!-- Error format strings -->
+    <string name="error_prefix">Error: %1$s</string>
+    <string name="error_initialization">Initialization error: %1$s</string>
+    <string name="error_state">State error: %1$s</string>
+    <string name="error_unexpected">Unexpected error: %1$s</string>
+    <string name="error_data_retrieval">Data retrieval error: %1$s</string>
+    <string name="error_update_start">Update start error: %1$s</string>
+    <string name="error_processing">Error during processing: %1$s</string>
+    <string name="error_receiver_setup">Error setting up receiver: %1$s</string>
+    <string name="error_service_stop">Error stopping service: %1$s: %2$s</string>
+    <string name="error_recording_toggle">Error toggling recording: %1$s</string>
+    <string name="error_speedometer_setup">Error setting up speedometer: %1$s</string>
+    <string name="error_rounded_corners">Error setting rounded corners: %1$s</string>
+    <string name="error_generic">Error: %1$s</string>
+    <string name="error_media_state">Media state error: %1$s</string>
+    <string name="error_initializing_recorder">Error initializing recorder</string>
+    <string name="error_general">An error occurred</string>
+    <string name="tooltip_shown_for">Tooltip shown for %1$s value</string>
+    
+    <!-- Translatable strings -->
+    <string name="settings_title">Settings</string>
+    <string name="noise_level">Noise Level</string>
+    <string name="info_icon_description">Information about measurement time</string>
+    <string name="button_reset_stats">Reset Statistics</string>
+    <string name="status">Status</string>
+    <string name="button_pause">Pause</string>
+    <string name="button_resume">Resume</string>
+    <string name="button_restart">Restart</string>
+    <string name="restart">Restart</string>
+    <string name="menu_language">Language</string>
+    <string name="menu_language_en">English</string>
+    <string name="menu_language_uk">Ukrainian</string>
+    <string name="recording_started">Recording started</string>
+    <string name="recording_paused">Recording paused</string>
+    <string name="recording_resumed">Recording resumed</string>
+    <string name="language_settings">Language</string>
+    <string name="ukrainian">Ukrainian</string>
+    <string name="english">English</string>
+    <string name="service_running">Service is running</string>
+    <string name="service_paused">Service is paused</string>
+    <string name="service_stopped">Service stopped</string>
+    <string name="service_starting">Starting service...</string>
+    <string name="waiting_permissions">Waiting for permissions...</string>
+    <string name="error_mic">Microphone error</string>
+    <string name="error_permissions">All permissions are required for the app to work</string>
+    <string name="error_service_start">Service start error</string>
+    <string name="error_toggle_recording">Error while changing recording state</string>
+    <string name="permission_granted">granted</string>
+    <string name="permission_denied">denied</string>
+    <string name="setting_up_speedometer">Setting up speedometer...</string>
+    <string name="speedometer_setup_success">Speedometer setup completed successfully</string>
+    <string name="minimum">minimum</string>
+    <string name="maximum">maximum</string>
+    <string name="recorded_at">Recorded at:</string>
+    <string name="stats_reset">Statistics have been reset</string>
+    <string name="min_tooltip_prefix">Minimum recorded at: </string>
+    <string name="max_tooltip_prefix">Maximum recorded at: </string>
+    <string name="no_data_available">No data available yet</string>
+    
+    <!-- Налаштування теми -->
+    <string name="theme_settings">Theme Settings</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_system">System</string>
+    
+    <!-- Налаштування фонового сервісу -->
+    <string name="background_service_settings">Background Service</string>
+    <string name="background_service_description">Enable background monitoring and notifications when app is not active</string>
+    <string name="background_service_enabled">Background monitoring enabled</string>
+    <string name="background_service_disabled">Background monitoring disabled</string>
+    
+    <!-- Battery optimization strings -->
+    <string name="battery_optimization_title">Battery Optimization</string>
+    <string name="battery_optimization_message">For accurate background measurements, please disable battery optimization for this app</string>
+    <string name="battery_optimization_button">Disable Optimization</string>
+    <string name="battery_optimization_negative">Skip</string>
+    <string name="battery_optimization_hint">Please disable battery optimization in the next screen</string>
+    <string name="battery_optimization_error">Could not open battery optimization settings</string>
+    <string name="battery_optimization_warning">The app may stop in background without disabling battery optimization</string>
+    
+    <!-- Noise level reference values -->
+    <string name="noise_reference_title">dB Reference Values</string>
+    <string name="speedometer_info_description">Information about noise levels</string>
+    <string name="noise_reference_close">Close</string>
+    <string name="noise_reference_content">Typical dB levels:\n\n• 0-10: Barely audible\n• 20-30: Whisper, quiet room\n• 40-50: Normal conversation\n• 60-70: Busy office, traffic\n• 80-90: Hairdryer, noisy factory\n• 100-110: Power tools, loud music\n• 120+: Painful, hearing damage risk</string>
+    <string name="noise_level_1">• 0-10 dB: Barely audible</string>
+    <string name="noise_level_2">• 20-30 dB: Whisper, quiet room</string>
+    <string name="noise_level_3">• 40-50 dB: Normal conversation</string>
+    <string name="noise_level_4">• 60-70 dB: Busy office, traffic</string>
+    <string name="noise_level_5">• 80-90 dB: Hairdryer, noisy factory</string>
+    <string name="noise_level_6">• 100-110 dB: Power tools, loud music</string>
+    <string name="noise_level_7">• 120+ dB: Painful, hearing damage risk</string>
+    <string name="close">Close</string>
+    
+    <!-- Service states -->
+    <string name="background_monitoring_enabled">Background monitoring enabled</string>
+    <string name="background_monitoring_disabled">Background monitoring disabled</string>
+    
+    <!-- Add these new strings for the calibration feature -->
+    <string name="calibration_settings">Calibration</string>
+    <string name="reset_all">Reset All</string>
+    <string name="reset_to_default">Reset to default</string>
+    <string name="noise_update_frequency">Update Frequency</string>
+    <string name="noise_sensitivity">Sensitivity</string>
+    <string name="noise_smoothing">Smoothing</string>
+    <string name="min_detectable_noise">Minimum Detectable Noise</string>
+    <string name="milliseconds">ms</string>
+    <string name="seconds">sec</string>
+    <string name="none">None</string>
+    <string name="reset_calibration_confirm_title">Reset Calibration</string>
+    <string name="reset_calibration_confirm_message">Are you sure you want to reset all calibration settings to factory defaults?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="reset_calibration_success">Calibration settings have been reset to defaults</string>
+    <string name="calibration_updated">Calibration settings updated</string>
+    <string name="too_many_errors_stopping">Too many errors, stopping noise monitoring</string>
+    <string name="error_starting_noise_monitoring">Error starting noise monitoring</string>
+    
+    <!-- Logging Feature -->
+    <string name="logging_settings_title">Logging Settings</string>
+    <string name="logging_enabled">Enable Logging</string>
+    <string name="logging_explanation">Logging saves noise readings for later review</string>
+    <string name="logging_background_explanation">Background logging works only when background monitoring is enabled</string>
+    <string name="logging_sample_frequency">Sample Frequency</string>
+    <string name="logging_retention_period">Log Retention Period</string>
+    <string name="view_logs">View Logs</string>
+    <string name="clear_logs">Clear All Logs</string>
+    <string name="logs_cleared">All logs have been cleared</string>
+    <string name="confirm_clear_logs">Are you sure you want to delete all logs?</string>
+    <string name="logs_title">Noise Logs</string>
+    <string name="no_logs_available">No logs available</string>
+    <string name="export_csv">Export CSV</string>
+    <string name="no_logs_for_export">No logs available for export</string>
+    <string name="sample_rate_05s">0.5 seconds</string>
+    <string name="sample_rate_1s">1 second</string>
+    <string name="sample_rate_5s">5 seconds</string>
+    <string name="sample_rate_10s">10 seconds</string>
+    <string name="retention_1m">1 minute</string>
+    <string name="retention_5m">5 minutes</string>
+    <string name="retention_10m">10 minutes</string>
+    <string name="retention_1h">1 hour</string>
+    <string name="retention_2h">2 hours</string>
+    <string name="retention_3h">3 hours</string>
+    <string name="retention_5h">5 hours</string>
+    <string name="retention_10h">10 hours</string>
+    <string name="retention_24h">24 hours</string>
+    <string name="log_date_time_format">%1$s at %2$s</string>
+    <string name="log_noise_value">%1$.1f dB</string>
+    
+    <!-- New strings for logging pause functionality -->
+    <string name="logging_pause">Pause Logging</string>
+    <string name="logging_resume">Resume Logging</string>
+    <string name="logging_paused">Logging paused</string>
+    <string name="logging_resumed">Logging resumed</string>
+    <string name="logging_disabled_warning">Disabling logging will clear all logs. Continue?</string>
+    <string name="logging_disabled_warning_title">Warning</string>
+    
+    <!-- Power off and sort functionality -->
+    <string name="power_off">Power Off</string>
+    <string name="power_off_confirmation">Are you sure you want to close the application? This will completely stop monitoring.</string>
+    <string name="power_off_confirmation_title">Close Application</string>
+    <string name="sort">Sort</string>
+    <string name="sort_noise_ascending">Lowest noise first</string>
+    <string name="sort_noise_descending">Highest noise first</string>
+    <string name="sort_time">Latest first (default)</string>
+    <string name="sort_by">Sort by</string>
+    
+    <!-- CSV Export Headers -->
+    <string name="csv_export_header">CSV export from Noise Level Monitor app</string>
+    <string name="csv_date_format_info">Date format: DD.MM.YYYY, Time format: HH:MM:SS</string>
+    <string name="csv_column_headers">Date,Time,Noise Level (dB)</string>
+</resources> 

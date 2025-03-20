@@ -1,0 +1,1195 @@
+package com.app.noiselevelmonitor;
+
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ServiceInfo;
+import android.media.MediaRecorder;
+import android.os.Build;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Looper;
+import android.os.PowerManager;
+import android.content.SharedPreferences;
+import android.util.Log;
+import androidx.core.app.NotificationCompat;
+import java.io.File;
+import java.util.Locale;
+import android.content.res.Configuration;
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+
+public class NoiseService extends Service {
+    private static final String TAG = "NoiseService";
+    
+    // Константи для WakeLock
+    private static final String WAKELOCK_TAG = "NoiseService:WakeLock";
+    
+    // Змінні для MediaRecorder
+    private MediaRecorder mediaRecorder;
+    private Handler handler;
+    private Runnable updateNoise;
+    
+    // Змінні стану
+    private boolean isRecording = false;
+    private boolean isSingleMeasurement = false;
+    private boolean isPaused = false;
+    private boolean isServiceRunning = true;
+    private boolean isBackgroundServiceEnabled = true;
+    private boolean isAppForeground = true;
+    private int errorCount = 0;
+    
+    // Змінні для вимірювання
+    private double[] recentAmplitudes = new double[Constants.SAMPLE_WINDOW];
+    private int amplitudeIndex = 0;
+    private double minNoiseLevel = 0;
+    private double maxNoiseLevel = 0;
+    private double totalNoiseLevel = 0;
+    private int noiseMeasurements = 0;
+    private long minNoiseTime = 0;
+    private long maxNoiseTime = 0;
+    private long lastNotificationUpdate = 0;
+    private double lastNoiseLevel = 0;
+    
+    // Змінні для вимірювання стабільності
+    private int stableReadingCount = 0;
+    private double lastStableReading = 0;
+    private boolean isStableMeasurementMode = false;
+    
+    // Системні змінні
+    private NotificationManager notificationManager;
+    private PowerManager.WakeLock wakeLock;
+
+    // Змінні для налаштувань калібрування
+    private long updateFrequency = Constants.NOISE_UPDATE_INTERVAL;
+    private double sensitivityOffset = 0.0;
+    private double smoothingFactor = 0.3;
+    private double minNoiseDetectionLevel = Constants.MIN_VALID_DB;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.d(TAG, "onCreate: Сервіс створюється");
+        
+        try {
+            // Оновлюємо мову сервісу
+            NoiseMonitorApplication app = (NoiseMonitorApplication) getApplication();
+            String languageCode = app.getStoredLanguage();
+            updateServiceLocale(languageCode);
+            
+            // Ініціалізуємо базові змінні
+            isServiceRunning = false; // Initially not in foreground mode
+            
+            // Завантажуємо налаштування фонового сервісу
+            SharedPreferences prefs = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE);
+            isBackgroundServiceEnabled = prefs.getBoolean(Constants.PREF_BACKGROUND_SERVICE, true);
+            
+            // Завантажуємо налаштування калібрування при створенні сервісу
+            loadCalibrationSettings(prefs);
+            
+            // Встановлюємо нотифікацію
+            createNotificationChannel();
+            // Використовуємо сумісний метод отримання NotificationManager
+            notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            
+            // Завантажуємо статистику
+            loadNoiseStats();
+        } catch (Exception e) {
+            Log.e(TAG, "onCreate: Помилка при створенні сервісу", e);
+            isServiceRunning = false;
+        }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        try {
+            // Отримуємо мову з додатку
+            NoiseMonitorApplication app = (NoiseMonitorApplication) base.getApplicationContext();
+            String languageCode = app.getStoredLanguage();
+            
+            // Створюємо локаль та контекст
+            Locale locale = new Locale(languageCode);
+            Configuration config = new Configuration();
+            config.setLocale(locale);
+            
+            // Створюємо контекст
+            Context context = base.createConfigurationContext(config);
+            super.attachBaseContext(context);
+        } catch (Exception e) {
+            super.attachBaseContext(base);
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        
+        // Отримуємо збережену мову і оновлюємо її
+        NoiseMonitorApplication app = (NoiseMonitorApplication) getApplication();
+        updateServiceLocale(app.getStoredLanguage());
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        createNotificationChannel();
+        
+        // Перевіряємо, чи запускаємось після перезапуску системи
+        if (intent == null) {
+            Log.d(TAG, "onStartCommand: intent is null, запуск після рестарту системи");
+            intent = new Intent();
+            
+            // При запуску після рестарту системи завжди починаємо запис
+            isPaused = false;
+            isRecording = true;
+            startNoiseUpdates();
+            broadcastRecordingState(true);
+            broadcastStatus(getString(R.string.service_running));
+            return START_STICKY;
+        }
+        
+        try {
+            boolean isFirstLaunch = intent.getBooleanExtra("isFirstLaunch", false);
+            boolean shouldRecord = intent.getBooleanExtra("isRecording", false);
+            boolean wasFullyShutdown = intent.getBooleanExtra("wasFullyShutdown", true); // За замовчуванням true
+            
+            Log.d(TAG, "onStartCommand: Отримано intent, isFirstLaunch=" + isFirstLaunch + 
+                ", shouldRecord=" + shouldRecord + ", wasFullyShutdown=" + wasFullyShutdown);
+            
+            // Завантажуємо стан паузи логування
+            boolean isLoggingPaused = false;
+            try {
+                isLoggingPaused = NoiseLogManager.getInstance(getApplicationContext()).isLoggingPaused();
+                Log.d(TAG, "onStartCommand: Стан паузи логування: " + isLoggingPaused);
+            } catch (Exception e) {
+                Log.e(TAG, "onStartCommand: Помилка при отриманні стану паузи логування", e);
+            }
+            
+            // Якщо додаток був повністю закритий або це перший запуск, відновлюємо запис
+            if (wasFullyShutdown || isFirstLaunch) {
+                Log.d(TAG, "onStartCommand: Запуск після закриття додатку або перший запуск, відновлюємо запис");
+                isPaused = false;
+                isRecording = true;
+                startNoiseUpdates();
+                broadcastRecordingState(true);
+                broadcastStatus(getString(R.string.service_running));
+                
+                // Відновлюємо стан логування (якщо було на паузі)
+                if (isLoggingPaused) {
+                    Log.d(TAG, "onStartCommand: Відновлюємо попередній стан паузи логування");
+                    NoiseLogManager.getInstance(getApplicationContext()).setLoggingPaused(isLoggingPaused);
+                }
+            } 
+            // Якщо явно вказано isRecording=true і не на паузі - запускаємо запис
+            else if (shouldRecord && !isPaused) {
+                isPaused = false;
+                Log.d(TAG, "onStartCommand: Запуск запису (isRecording=true)");
+                startNoiseUpdates();
+            }
+            
+            String action = intent.getAction();
+            if (action != null) {
+                switch (action) {
+                    case Constants.ACTION_TOGGLE_RECORDING:
+                        toggleRecording();
+                        break;
+                    case Constants.ACTION_MEASURE_ONCE:
+                        performSingleMeasurement();
+                        break;
+                    case Constants.ACTION_RESET_STATS:
+                        resetStats();
+                        break;
+                    case Constants.ACTION_UPDATE_BACKGROUND_STATE:
+                        handleBackgroundStateChange(intent);
+                        break;
+                    case Constants.ACTION_UPDATE_RECORDING:
+                        handleRecordingStateChange(intent);
+                        break;
+                    case Constants.ACTION_APP_TO_BACKGROUND:
+                        isAppForeground = false;
+                        break;
+                    case Constants.ACTION_APP_TO_FOREGROUND:
+                        isAppForeground = true;
+                        break;
+                    case Constants.ACTION_UPDATE_CALIBRATION:
+                        handleCalibrationUpdate(intent);
+                        break;
+                }
+            }
+            
+            // Оновлюємо локаль сервісу, якщо передано пов'язані дані
+            if (intent.hasExtra(Constants.PREF_LANGUAGE)) {
+                String languageCode = intent.getStringExtra(Constants.PREF_LANGUAGE);
+                updateServiceLocale(languageCode);
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "onStartCommand: Помилка при обробці наміру", e);
+        }
+        
+        return START_STICKY;
+    }
+
+    // Оновлює локаль сервісу без перезапуску запису
+    private void updateServiceLocale(String languageCode) {
+        try {
+            // Зберігаємо стан запису
+            boolean wasRecording = isRecording && !isPaused;
+            
+            // Встановлюємо локаль
+            Locale newLocale = new Locale(languageCode);
+            
+            // Оновлюємо конфігурацію
+            Configuration config = new Configuration();
+            config.setLocale(newLocale);
+            Context context = createConfigurationContext(config);
+            
+            // КЛЮЧОВИЙ МОМЕНТ: Застосовуємо нову ресурсну конфігурацію до основної конфігурації сервісу
+            Resources resources = getResources();
+            Configuration currentConfig = resources.getConfiguration();
+            currentConfig.setLocale(newLocale);
+            resources.updateConfiguration(currentConfig, resources.getDisplayMetrics());
+            
+            // Оновлюємо статус
+            String status = wasRecording ? 
+                context.getString(R.string.service_running) : 
+                context.getString(R.string.service_paused);
+            broadcastStatus(status);
+            
+            // Оновлюємо нотифікацію за потреби, використовуючи новий контекст
+            if (isBackgroundServiceEnabled && wasRecording) {
+                // Примусово оновлюємо нотифікацію
+                lastNotificationUpdate = 0; // Скидаємо лічильник часу, щоб примусити оновлення
+                createOrUpdateNotification(lastNoiseLevel);
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "updateServiceLocale: Помилка при оновленні мови", e);
+        }
+    }
+
+    // Ініціалізація MediaRecorder
+    private void initializeMediaRecorder() {
+        try {
+            // Skip if already recording
+            if (isRecording && mediaRecorder != null) {
+                return;
+            }
+            
+            // Check permission
+            if (checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                broadcastStatus(getString(R.string.error_permissions));
+                return;
+            }
+            
+            // Release previous recorder if any
+            releaseMediaRecorder();
+            
+            // Create new recorder
+            mediaRecorder = new MediaRecorder();
+            mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+            mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+            
+            File tempFile = File.createTempFile("noise", ".3gp", getCacheDir());
+            mediaRecorder.setOutputFile(tempFile.getAbsolutePath());
+            
+            mediaRecorder.prepare();
+            mediaRecorder.start();
+            
+            // Update state
+            isRecording = true;
+            isPaused = false;
+            errorCount = 0;
+            
+            // Create notification only if background service enabled
+            if (isBackgroundServiceEnabled) {
+                createOrUpdateNotification(0);
+            }
+            
+            // Update UI
+            broadcastStatus(getString(R.string.service_running));
+            broadcastRecordingState(true);
+            
+            // REMOVED: Don't call startNoiseUpdates here as it creates a potential loop
+            // This method is called FROM startNoiseUpdates, so we shouldn't call it again
+            
+        } catch (Exception e) {
+            Log.e(TAG, "initializeMediaRecorder: Error", e);
+            isRecording = false;
+            isPaused = true;
+            handleError(getString(R.string.error_initializing_recorder));
+        }
+    }
+
+    // Звільнення ресурсів MediaRecorder
+    private void releaseMediaRecorder() {
+        try {
+            if (mediaRecorder != null) {
+                if (isRecording) {
+                    try {
+                        mediaRecorder.stop();
+                    } catch (RuntimeException ignored) {
+                        // Ігноруємо помилки зупинки
+                    }
+                }
+                
+                try {
+                    mediaRecorder.reset();
+                    mediaRecorder.release();
+                } catch (Exception ignored) {
+                    // Ігноруємо помилки вивільнення
+                }
+                
+                mediaRecorder = null;
+            }
+            
+            isRecording = false;
+            
+        } catch (Exception e) {
+            Log.e(TAG, "releaseMediaRecorder: Загальна помилка", e);
+            mediaRecorder = null;
+        }
+    }
+
+    // Оновлення стану запису
+    private void startNoiseUpdates() {
+        try {
+            // Add guard to prevent recursive calls
+            if (handler != null && updateNoise != null && handler.hasCallbacks(updateNoise)) {
+                Log.d(TAG, "startNoiseUpdates: Already updating, skipping");
+                return;
+            }
+            
+            Log.d(TAG, "startNoiseUpdates: Starting noise update process");
+            
+            if (handler == null) {
+                handler = new Handler(Looper.getMainLooper());
+            }
+            
+            // Initialize the MediaRecorder if not already recording
+            if (!isRecording || mediaRecorder == null) {
+                initializeMediaRecorder();
+            }
+            
+            // Create a new runnable for noise updates
+            if (updateNoise == null) {
+                updateNoise = new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            // Skip if we're not supposed to be recording anymore
+                            if (!isRecording || isPaused) {
+                                Log.d(TAG, "updateNoise: Not recording anymore, skipping");
+                                return;
+                            }
+                            
+                            // Отримуємо поточний рівень шуму
+                            double noiseLevel = getNoiseLevelFromRecorder();
+                            
+                            // Зберігаємо останнє значення для згладжування
+                            lastNoiseLevel = noiseLevel;
+                            
+                            // Логування шуму
+                            if (NoiseLogManager.getInstance(getApplicationContext()).isLoggingEnabled()) {
+                                NoiseLogManager.getInstance(getApplicationContext()).logNoiseLevel(noiseLevel);
+                            }
+                            
+                            // Надсилаємо оновлення в UI
+                            broadcastNoiseLevel(noiseLevel);
+                            
+                            // Оновлюємо сповіщення, якщо потрібно
+                            long currentTime = System.currentTimeMillis();
+                            if (currentTime - lastNotificationUpdate >= Constants.NOTIFICATION_UPDATE_INTERVAL) {
+                                createOrUpdateNotification(noiseLevel);
+                                lastNotificationUpdate = currentTime;
+                            }
+                            
+                            // Оновлюємо статистику, якщо не в режимі одноразового вимірювання
+                            if (!isSingleMeasurement) {
+                                updateNoiseStats(noiseLevel);
+                            }
+                            
+                            // Плануємо наступне оновлення, якщо це не одноразове вимірювання
+                            if (!isSingleMeasurement && isRecording && !isPaused) {
+                                handler.postDelayed(this, updateFrequency);
+                            } else if (isSingleMeasurement) {
+                                // Вимикаємо запис після одноразового вимірювання
+                                isSingleMeasurement = false;
+                                stopNoiseUpdates();
+                            }
+                        } catch (Exception e) {
+                            Log.e(TAG, "run: Помилка при вимірюванні шуму", e);
+                            
+                            errorCount++;
+                            if (errorCount >= Constants.MAX_ERRORS) {
+                                handleError(getString(R.string.too_many_errors_stopping));
+                                stopNoiseUpdates();
+                            } else {
+                                // Спробуємо продовжити з новим запланованим оновленням
+                                if (isRecording && !isPaused) {
+                                    handler.postDelayed(this, updateFrequency);
+                                }
+                            }
+                        }
+                    }
+                };
+            }
+            
+            // Запускаємо перше оновлення, але тільки якщо не запущено і потрібно
+            if (isRecording && !isPaused) {
+                // Clear any existing callbacks to ensure we don't have duplicates
+                handler.removeCallbacks(updateNoise);
+                handler.post(updateNoise);
+                Log.d(TAG, "startNoiseUpdates: Posted first update");
+            }
+            
+            // Поновлюємо WakeLock, якщо сервіс працює у фоні і ця опція увімкнена
+            if (!isAppForeground && isBackgroundServiceEnabled) {
+                acquireWakeLock();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "startNoiseUpdates: Помилка при запуску вимірювання шуму", e);
+            handleError(getString(R.string.error_starting_noise_monitoring) + ": " + e.getMessage());
+        }
+    }
+
+    // Зупинка оновлень рівня шуму
+    private void stopNoiseUpdates() {
+        try {
+            Log.d(TAG, "stopNoiseUpdates: Stopping noise updates");
+            
+            // If we're already stopped, don't do it again
+            if (!isRecording && isPaused && mediaRecorder == null) {
+                Log.d(TAG, "stopNoiseUpdates: Already stopped, skipping");
+                return;
+            }
+            
+            // Remove handler callbacks
+            if (handler != null && updateNoise != null) {
+                handler.removeCallbacks(updateNoise);
+            }
+            
+            // Release wake lock
+            releaseWakeLock();
+            
+            // Update state
+            isPaused = true;
+            isRecording = false;
+            
+            Log.d(TAG, "stopNoiseUpdates: Updated state to isPaused=" + isPaused + ", isRecording=" + isRecording);
+            
+            // Update UI and notification based on background service setting
+            if (isBackgroundServiceEnabled) {
+                // Just update notification to show paused state
+                lastNotificationUpdate = 0; // Reset last update time to force refresh
+                createOrUpdateNotification(lastNoiseLevel);
+            } else {
+                // Remove notification entirely
+                stopForeground(true);
+                notificationManager.cancel(Constants.NOTIFICATION_ID);
+            }
+            
+            // Update UI
+            broadcastRecordingState(false);
+            broadcastNoiseLevel(0.0);
+            broadcastStatus(getString(R.string.service_paused));
+            
+        } catch (Exception e) {
+            Log.e(TAG, "stopNoiseUpdates: Error", e);
+        }
+    }
+
+    // Створення або оновлення нотифікації
+    private void createOrUpdateNotification(double noiseLevel) {
+        // ISSUE #1: Only show notification if background service is enabled
+        if (!isBackgroundServiceEnabled) {
+            // Ensure notification is fully removed when background service is disabled
+            stopForeground(true);
+            notificationManager.cancel(Constants.NOTIFICATION_ID);
+            Log.d(TAG, "Not showing notification: background service disabled");
+            return;
+        }
+        
+        // Check if we need to force an update because of a state change
+        boolean forceUpdate = false;
+        if (System.currentTimeMillis() - lastNotificationUpdate < Constants.NOTIFICATION_UPDATE_INTERVAL) {
+            // Only proceed if we explicitly reset lastNotificationUpdate to force an update
+            if (lastNotificationUpdate == 0) {
+                forceUpdate = true;
+                Log.d(TAG, "Forcing notification update due to state change");
+            } else {
+                // Limit frequency of regular updates
+                return;
+            }
+        }
+        
+        Log.d(TAG, "Creating/updating notification with isPaused=" + isPaused + ", isRecording=" + isRecording);
+        
+        // Build the notification
+        Notification notification = buildNotification(noiseLevel, null);
+        
+        // ISSUE #2: Start as foreground service if not already running
+        if (!isServiceRunning) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                startForeground(Constants.NOTIFICATION_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE);
+            } else {
+                startForeground(Constants.NOTIFICATION_ID, notification);
+            }
+            isServiceRunning = true;
+            Log.d(TAG, "Started foreground service with notification");
+        } else {
+            // Just update existing notification
+            notificationManager.notify(Constants.NOTIFICATION_ID, notification);
+            Log.d(TAG, "Updated existing notification");
+        }
+        
+        // Only update timestamp if this wasn't a forced update
+        if (!forceUpdate) {
+            lastNotificationUpdate = System.currentTimeMillis();
+        } else {
+            // Reset to current time if it was 0
+            if (lastNotificationUpdate == 0) {
+                lastNotificationUpdate = System.currentTimeMillis();
+            }
+        }
+    }
+
+    // Нотифікація з помилкою
+    private void updateNotificationWithError(String errorMessage) {
+        if (notificationManager == null) return;
+        
+        try {
+            Resources res = getResources();
+            Notification notification = buildNotification(0, String.format(res.getString(R.string.error_generic), errorMessage));
+            notificationManager.notify(Constants.NOTIFICATION_ID, notification);
+        } catch (Exception e) {
+            Log.e(TAG, "updateNotificationWithError: Помилка", e);
+        }
+    }
+    
+    // Будує нотифікацію з заданими параметрами
+    private Notification buildNotification(double noiseLevel, String customText) {
+        String contentText;
+        
+        // Отримуємо актуальні ресурси з поточною локаллю
+        Resources res = getResources();
+        
+        if (customText != null) {
+            contentText = customText;
+        } else {
+            // Use lastNoiseLevel when paused to show consistent values with the main screen
+            double displayValue = isRecording ? noiseLevel : lastNoiseLevel;
+            contentText = String.format(res.getString(R.string.notification_noise_level), displayValue);
+        }
+        
+        // Log current state to help debug notification button state
+        Log.d(TAG, "Building notification with isPaused=" + isPaused + ", isRecording=" + isRecording + ", noise=" + (isRecording ? noiseLevel : lastNoiseLevel));
+        
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, Constants.CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_stat_kisspng_computer_icons)
+            .setContentTitle(res.getString(R.string.app_name))
+            .setContentText(contentText)
+            .setPriority(NotificationCompat.PRIORITY_LOW)
+            .setOngoing(true)
+            .setOnlyAlertOnce(false) // Changed to false to ensure updates are shown
+            .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
+            .setCategory(NotificationCompat.CATEGORY_SERVICE);
+            
+        // Кнопка паузи/відновлення - critical to avoid caching by passing a unique requestCode
+        Intent toggleIntent = new Intent(this, NoiseService.class);
+        toggleIntent.setAction(Constants.ACTION_TOGGLE_RECORDING);
+        
+        // Add timestamp to make each intent unique and avoid caching
+        toggleIntent.putExtra("timestamp", System.currentTimeMillis());
+        
+        // Generate a unique request code for this PendingIntent to avoid caching
+        int requestCode = (int) (System.currentTimeMillis() & 0xfffffff);
+        
+        PendingIntent togglePendingIntent = PendingIntent.getService(
+            this, requestCode, toggleIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        
+        String buttonText = isPaused ? res.getString(R.string.button_resume) : res.getString(R.string.button_pause);
+        Log.d(TAG, "Setting notification button text to: " + buttonText);
+        
+        builder.addAction(0, buttonText, togglePendingIntent);
+        
+        // Intent для відкриття активності
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+            this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        builder.setContentIntent(pendingIntent);
+        
+        return builder.build();
+    }
+
+    // Обробка помилок
+    private void handleError(String errorMessage) {
+        errorCount++;
+        Log.e(TAG, "handleError: " + errorMessage);
+        broadcastStatus(errorMessage);
+        
+        if (errorCount >= Constants.MAX_ERRORS) {
+            createOrUpdateNotification(0);
+        } else {
+            if (handler != null) {
+                handler.postDelayed(this::initializeMediaRecorder, 1000);
+            }
+        }
+    }
+
+    // Створення каналу нотифікацій
+    private void createNotificationChannel() {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationChannel channel = new NotificationChannel(
+                    Constants.CHANNEL_ID,
+                    getString(R.string.app_name),
+                    NotificationManager.IMPORTANCE_LOW
+                );
+                channel.setDescription(getString(R.string.service_running));
+                channel.setSound(null, null);
+                channel.enableLights(false);
+                channel.enableVibration(false);
+                channel.setShowBadge(false);
+                
+                NotificationManager notificationManager = getSystemService(NotificationManager.class);
+                if (notificationManager != null) {
+                    notificationManager.createNotificationChannel(channel);
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "createNotificationChannel: Помилка", e);
+        }
+    }
+
+    // Вимірювання рівня шуму
+    private double getNoiseLevelFromRecorder() {
+        try {
+            if (mediaRecorder == null) {
+                return minNoiseDetectionLevel;
+            }
+            
+            double amplitude = (double) mediaRecorder.getMaxAmplitude();
+            
+            // Ігноруємо невалідні значення
+            if (amplitude <= 0) {
+                return lastNoiseLevel > 0 ? lastNoiseLevel : minNoiseDetectionLevel;
+            }
+            
+            // Зберігаємо для усереднення
+            recentAmplitudes[amplitudeIndex] = amplitude;
+            amplitudeIndex = (amplitudeIndex + 1) % Constants.SAMPLE_WINDOW;
+            
+            // Розраховуємо середню амплітуду
+            double averageAmplitude = 0;
+            int validSamples = 0;
+            for (double amp : recentAmplitudes) {
+                if (amp > 0) {
+                    averageAmplitude += amp;
+                    validSamples++;
+                }
+            }
+            
+            if (validSamples == 0) {
+                return lastNoiseLevel > 0 ? lastNoiseLevel : minNoiseDetectionLevel;
+            }
+            
+            averageAmplitude /= validSamples;
+            
+            // Конвертація в дБ з урахуванням налаштувань калібрування
+            double db = 20 * Math.log10(averageAmplitude / Constants.REFERENCE_AMPLITUDE) + Constants.CALIBRATION_OFFSET + sensitivityOffset;
+            
+            // Обмеження діапазону з урахуванням користувацького мінімального рівня шуму
+            db = Math.max(minNoiseDetectionLevel, Math.min(Constants.MAX_DB, db));
+            
+            // Згладжування з користувацьким коефіцієнтом
+            if (lastNoiseLevel > 0 && smoothingFactor > 0) {
+                db = (1 - smoothingFactor) * db + smoothingFactor * lastNoiseLevel;
+            }
+            
+            return db;
+        } catch (Exception e) {
+            return lastNoiseLevel > 0 ? lastNoiseLevel : minNoiseDetectionLevel;
+        }
+    }
+
+    // Оновлення статистики шуму
+    private void updateNoiseStats(double db) {
+        long currentTime = System.currentTimeMillis();
+        
+        // Пропускаємо лише явно невалідні значення
+        if (db < minNoiseDetectionLevel) {
+            return;
+        }
+        
+        // Оновлюємо мінімум (якщо minNoiseLevel == 0, це означає що значення не встановлено)
+        if ((minNoiseLevel == 0) || (db < minNoiseLevel)) {
+            minNoiseLevel = db;
+            minNoiseTime = currentTime;
+        }
+        
+        // Оновлюємо максимум (якщо maxNoiseLevel == 0, це означає що значення не встановлено)
+        if ((maxNoiseLevel == 0) || (db > maxNoiseLevel)) {
+            maxNoiseLevel = db;
+            maxNoiseTime = currentTime;
+        }
+        
+        // Режим стабільних вимірювань
+        if (isStableMeasurementMode) {
+            if (Math.abs(db - lastStableReading) < 1.0) {
+                stableReadingCount++;
+                lastStableReading = db;
+                
+                if (stableReadingCount >= Constants.MIN_STABLE_READINGS) {
+                    totalNoiseLevel += db;
+                    noiseMeasurements++;
+                }
+            } else {
+                stableReadingCount = 1;
+                lastStableReading = db;
+            }
+        } else {
+            stableReadingCount = 1;
+            lastStableReading = db;
+            isStableMeasurementMode = true;
+            
+            totalNoiseLevel += db;
+            noiseMeasurements++;
+        }
+        
+        saveNoiseStats();
+    }
+
+    // Завантаження статистики
+    private void loadNoiseStats() {
+        SharedPreferences prefs = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE);
+        minNoiseLevel = prefs.getFloat(Constants.PREF_MIN_NOISE, 0);
+        maxNoiseLevel = prefs.getFloat(Constants.PREF_MAX_NOISE, 0);
+        totalNoiseLevel = prefs.getFloat(Constants.PREF_TOTAL_NOISE, 0);
+        noiseMeasurements = prefs.getInt(Constants.PREF_MEASUREMENTS, 0);
+        minNoiseTime = prefs.getLong(Constants.PREF_MIN_NOISE_TIME, 0);
+        maxNoiseTime = prefs.getLong(Constants.PREF_MAX_NOISE_TIME, 0);
+    }
+
+    // Збереження статистики
+    private void saveNoiseStats() {
+        SharedPreferences.Editor editor = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putFloat(Constants.PREF_MIN_NOISE, (float) minNoiseLevel);
+        editor.putFloat(Constants.PREF_MAX_NOISE, (float) maxNoiseLevel);
+        editor.putFloat(Constants.PREF_TOTAL_NOISE, (float) totalNoiseLevel);
+        editor.putInt(Constants.PREF_MEASUREMENTS, noiseMeasurements);
+        editor.putLong(Constants.PREF_MIN_NOISE_TIME, minNoiseTime);
+        editor.putLong(Constants.PREF_MAX_NOISE_TIME, maxNoiseTime);
+        editor.apply();
+    }
+
+    // Скидання статистики
+    private void resetStats() {
+        minNoiseLevel = 0;
+        maxNoiseLevel = 0;
+        totalNoiseLevel = 0;
+        noiseMeasurements = 0;
+        minNoiseTime = 0;
+        maxNoiseTime = 0;
+        
+        stableReadingCount = 0;
+        lastStableReading = 0;
+        isStableMeasurementMode = false;
+        
+        saveNoiseStats();
+        
+        // Оновлюємо UI
+        broadcastNoiseLevel(lastNoiseLevel);
+    }
+
+    // Перемикання режиму запису
+    private void toggleRecording() {
+        try {
+            Log.d(TAG, "Toggling recording. Current state: isPaused=" + isPaused);
+            
+            if (isPaused) {
+                // Resuming recording
+                isPaused = false;
+                
+                // Mark as user-initiated action
+                SharedPreferences.Editor editor = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE).edit();
+                editor.putBoolean(Constants.PREF_IS_PAUSED, false);
+                editor.apply();
+                
+                // Don't start recording in background if background service disabled
+                if (!isBackgroundServiceEnabled && !isAppForeground) {
+                    Log.d(TAG, "Not starting recording: app in background + bg service disabled");
+                    return;
+                }
+                
+                // Start recording directly using startNoiseUpdates
+                // We don't call initializeMediaRecorder directly anymore to avoid potential loops
+                startNoiseUpdates();
+            } else {
+                // Pausing recording
+                isPaused = true;
+                
+                // Mark as user-initiated action
+                SharedPreferences.Editor editor = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE).edit();
+                editor.putBoolean(Constants.PREF_IS_PAUSED, true);
+                editor.apply();
+                
+                // Stop recording
+                stopNoiseUpdates();
+                releaseMediaRecorder();
+                
+                // Update UI
+                broadcastStatus(getString(R.string.service_paused));
+            }
+            
+            // Update UI with recording state
+            broadcastRecordingState(!isPaused);
+            
+            // Update notification if needed
+            if (isBackgroundServiceEnabled) {
+                // Force notification to rebuild with current state
+                Log.d(TAG, "Forcing notification refresh after toggle: isPaused=" + isPaused);
+                lastNotificationUpdate = 0; // Reset last update time to force refresh
+                createOrUpdateNotification(lastNoiseLevel);
+            } else {
+                // Always ensure notification is completely removed
+                stopForeground(true);
+                notificationManager.cancel(Constants.NOTIFICATION_ID);
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "toggleRecording: Error", e);
+        }
+    }
+
+    // Одноразове вимірювання
+    private void performSingleMeasurement() {
+        isSingleMeasurement = true;
+        
+        if (!isRecording) {
+            // Якщо запис не запущено - запускаємо його
+            // startNoiseUpdates обробить завершення вимірювання
+            initializeMediaRecorder();
+        } else {
+            // Вже записуємо - просто отримуємо значення і завершуємо
+            double level = getNoiseLevelFromRecorder();
+            broadcastNoiseLevel(level);
+            
+            // Плануємо зупинку через невеликий проміжок часу
+            if (handler != null) {
+                handler.postDelayed(() -> {
+                    // Оскільки запис вже був активний, не зупиняємо його
+                    // Тільки скидаємо прапорець одноразового вимірювання
+                    isSingleMeasurement = false;
+                }, 300);
+            } else {
+                isSingleMeasurement = false;
+            }
+        }
+    }
+
+    // Зупинка сервісу
+    public void stopNoiseService() {
+        try {
+            if (isServiceRunning) {
+                stopNoiseUpdates();
+                saveNoiseStats();
+                releaseMediaRecorder();
+                isServiceRunning = false;
+                stopForeground(true);
+                stopSelf();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "stopNoiseService: Помилка", e);
+        }
+    }
+
+    // Обробка зміни режиму фонового сервісу
+    private void handleBackgroundStateChange(Intent intent) {
+        boolean wasBackgroundEnabled = isBackgroundServiceEnabled;
+        isBackgroundServiceEnabled = intent.getBooleanExtra(Constants.PREF_BACKGROUND_SERVICE, true);
+        
+        // Зберігаємо налаштування
+        SharedPreferences.Editor editor = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean(Constants.PREF_BACKGROUND_SERVICE, isBackgroundServiceEnabled);
+        editor.apply();
+        
+        Log.d(TAG, "Background service setting changed: " + isBackgroundServiceEnabled);
+        
+        // ISSUE #6: Critical moment - handle transition from enabled->disabled
+        if (wasBackgroundEnabled && !isBackgroundServiceEnabled) {
+            // Ensure notification is completely removed
+            stopForeground(true);
+            notificationManager.cancel(Constants.NOTIFICATION_ID);
+            Log.d(TAG, "Removed notification due to background service being disabled");
+            
+            // If app is not in foreground, we need to stop recording
+            if (!isAppForeground && isRecording) {
+                isPaused = true;
+                stopNoiseUpdates();
+                releaseMediaRecorder();
+                broadcastStatus(getString(R.string.service_paused));
+                Log.d(TAG, "Stopped recording because app is in background and background service disabled");
+            }
+        } 
+        // ISSUE #7: Handle transition from disabled->enabled
+        else if (!wasBackgroundEnabled && isBackgroundServiceEnabled && isRecording) {
+            // Show notification if recording is active
+            createOrUpdateNotification(lastNoiseLevel);
+            Log.d(TAG, "Created notification after enabling background service");
+        }
+    }
+
+    // Обробка зміни стану запису
+    private void handleRecordingStateChange(Intent intent) {
+        boolean shouldRecord = intent.getBooleanExtra(Constants.EXTRA_IS_RECORDING, false);
+        
+        Log.d(TAG, "handleRecordingStateChange: Отримано запит на зміну стану запису, shouldRecord=" + shouldRecord);
+        
+        if (shouldRecord && (!isRecording || isPaused)) {
+            // Запускаємо запис, якщо він ще не запущений або на паузі
+            Log.d(TAG, "handleRecordingStateChange: Запускаємо запис");
+            isPaused = false;
+            startNoiseUpdates(); // Це також викличе initializeMediaRecorder якщо потрібно
+            
+            // Оновлюємо UI
+            broadcastRecordingState(true);
+            broadcastStatus(getString(R.string.service_running));
+        } else if (!shouldRecord && isRecording && !isPaused) {
+            // Зупиняємо запис, якщо він активний
+            Log.d(TAG, "handleRecordingStateChange: Зупиняємо запис");
+            stopNoiseUpdates();
+            releaseMediaRecorder();
+            
+            // Оновлюємо UI
+            broadcastRecordingState(false);
+            broadcastStatus(getString(R.string.service_paused));
+        } else {
+            Log.d(TAG, "handleRecordingStateChange: Не потрібно змінювати стан, поточний стан: isRecording=" 
+                  + isRecording + ", isPaused=" + isPaused);
+        }
+    }
+
+    // Відправка даних одним інтентом (уніфікована)
+    private void broadcastUpdate(double noiseLevel, String status, boolean recordingState) {
+        try {
+            Intent intent = new Intent(Constants.ACTION_NOISE_UPDATE);
+            intent.setPackage(getPackageName());
+            
+            // Рівень шуму
+            intent.putExtra(Constants.EXTRA_NOISE_LEVEL, noiseLevel);
+            
+            // Статистика
+            intent.putExtra("min_noise", minNoiseLevel);
+            intent.putExtra("max_noise", maxNoiseLevel);
+            intent.putExtra("total_noise", totalNoiseLevel);
+            intent.putExtra("measurements", noiseMeasurements);
+            intent.putExtra("min_noise_time", minNoiseTime);
+            intent.putExtra("max_noise_time", maxNoiseTime);
+            
+            // Стан запису
+            intent.putExtra(Constants.EXTRA_RECORDING_STATE, recordingState);
+            
+            // Статус
+            if (status != null) {
+                intent.putExtra(Constants.EXTRA_STATUS, status);
+            } else {
+                String defaultStatus = recordingState ? 
+                    getString(R.string.service_running) : getString(R.string.service_paused);
+                intent.putExtra(Constants.EXTRA_STATUS, defaultStatus);
+            }
+            
+            // Стан фонового моніторингу
+            intent.putExtra(Constants.EXTRA_BACKGROUND_SERVICE_STATE, isBackgroundServiceEnabled);
+            
+            sendBroadcast(intent);
+        } catch (Exception e) {
+            Log.e(TAG, "broadcastUpdate: Помилка", e);
+        }
+    }
+    
+    // Відправка статусу (використовує уніфікований метод)
+    private void broadcastStatus(String status) {
+        broadcastUpdate(lastNoiseLevel, status, isRecording);
+    }
+
+    // Відправка стану запису (використовує уніфікований метод)
+    private void broadcastRecordingState(boolean recordingState) {
+        broadcastUpdate(lastNoiseLevel, null, recordingState);
+    }
+
+    // Відправка рівня шуму (використовує уніфікований метод)
+    private void broadcastNoiseLevel(double db) {
+        broadcastUpdate(db, null, isRecording);
+    }
+
+    // Робота з WakeLock
+    private void acquireWakeLock() {
+        try {
+            if (wakeLock == null) {
+                PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, WAKELOCK_TAG);
+                wakeLock.setReferenceCounted(false);
+            }
+            
+            if (!wakeLock.isHeld()) {
+                wakeLock.acquire(10*60*1000L); // 10 хвилин
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "acquireWakeLock: Помилка", e);
+        }
+    }
+
+    private void releaseWakeLock() {
+        try {
+            if (wakeLock != null && wakeLock.isHeld()) {
+                wakeLock.release();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "releaseWakeLock: Помилка", e);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        try {
+            Log.d(TAG, "Service being destroyed - cleaning up resources");
+            
+            // Stop all active processing
+            stopNoiseUpdates();
+            releaseMediaRecorder();
+            releaseWakeLock();
+            
+            // Update service state
+            isServiceRunning = false;
+            
+            // Save stats before exit
+            saveNoiseStats();
+            
+            // Always ensure notification is completely removed
+            stopForeground(true);
+            notificationManager.cancel(Constants.NOTIFICATION_ID);
+            
+        } catch (Exception e) {
+            Log.e(TAG, "onDestroy: Error", e);
+        } finally {
+            super.onDestroy();
+        }
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    // Add the method to handle calibration updates
+    /**
+     * Обробляє оновлення налаштувань калібрування
+     */
+    private void handleCalibrationUpdate(Intent intent) {
+        try {
+            boolean settingsChanged = false;
+            
+            if (intent.hasExtra(Constants.EXTRA_UPDATE_FREQUENCY)) {
+                long newFrequency = intent.getLongExtra(Constants.EXTRA_UPDATE_FREQUENCY, Constants.NOISE_UPDATE_INTERVAL);
+                settingsChanged = newFrequency != updateFrequency;
+                updateFrequency = newFrequency;
+                Log.d(TAG, "handleCalibrationUpdate: Частота оновлення змінена на " + updateFrequency + " мс");
+            }
+            
+            if (intent.hasExtra(Constants.EXTRA_SENSITIVITY_OFFSET)) {
+                sensitivityOffset = intent.getDoubleExtra(Constants.EXTRA_SENSITIVITY_OFFSET, 0.0);
+                Log.d(TAG, "handleCalibrationUpdate: Зміщення чутливості змінено на " + sensitivityOffset + " dB");
+            }
+            
+            if (intent.hasExtra(Constants.EXTRA_SMOOTHING_FACTOR)) {
+                smoothingFactor = intent.getDoubleExtra(Constants.EXTRA_SMOOTHING_FACTOR, 0.3);
+                Log.d(TAG, "handleCalibrationUpdate: Коефіцієнт згладжування змінено на " + smoothingFactor);
+            }
+            
+            if (intent.hasExtra(Constants.EXTRA_MIN_NOISE_LEVEL)) {
+                minNoiseDetectionLevel = intent.getDoubleExtra(Constants.EXTRA_MIN_NOISE_LEVEL, Constants.MIN_VALID_DB);
+                Log.d(TAG, "handleCalibrationUpdate: Мінімальний рівень шуму змінено на " + minNoiseDetectionLevel + " dB");
+            }
+
+            // Перезапускаємо оновлення шуму тільки якщо змінилася частота оновлення і запис активний
+            if (isRecording && !isPaused && settingsChanged) {
+                Log.d(TAG, "handleCalibrationUpdate: Перезапуск оновлення через зміну частоти");
+                
+                // Не зупиняємо повністю, а лише оновлюємо таймінг
+                if (handler != null && updateNoise != null) {
+                    handler.removeCallbacks(updateNoise);
+                    handler.postDelayed(updateNoise, updateFrequency);
+                }
+            }
+            
+            // Повідомляємо про оновлення налаштувань
+            broadcastStatus(getString(R.string.calibration_updated));
+        } catch (Exception e) {
+            Log.e(TAG, "handleCalibrationUpdate: Помилка при оновленні налаштувань калібрування", e);
+        }
+    }
+
+    /**
+     * Завантажує налаштування калібрування з SharedPreferences
+     */
+    private void loadCalibrationSettings(SharedPreferences prefs) {
+        try {
+            // Константи для налаштувань калібрування, аналогічні до SettingsActivity
+            final String PREF_UPDATE_FREQUENCY = "calibration_update_frequency";
+            final String PREF_SENSITIVITY = "calibration_sensitivity";
+            final String PREF_SMOOTHING = "calibration_smoothing";
+            final String PREF_MIN_NOISE_LEVEL = "calibration_min_noise_level";
+            
+            // Стандартні індекси для налаштувань
+            final int DEFAULT_UPDATE_FREQUENCY_INDEX = 1; // 100ms
+            final int DEFAULT_SENSITIVITY_INDEX = 4;      // 0.0 dB (index 4 is 0.0 in the array)
+            final int DEFAULT_SMOOTHING_INDEX = 1;        // 0.3
+            final int DEFAULT_MIN_NOISE_LEVEL_INDEX = 2;  // 30.0 dB
+            
+            // Масиви значень для налаштувань
+            final long[] UPDATE_FREQUENCIES = {50, 100, 200, 500, 1000};
+            final double[] SENSITIVITY_OFFSETS = {-10.0, -7.5, -5.0, -2.5, 0.0, 2.5, 5.0, 7.5, 10.0};
+            final double[] SMOOTHING_FACTORS = {0.0, 0.3, 0.5, 0.7, 0.9};
+            final double[] MIN_NOISE_LEVELS = {20.0, 25.0, 30.0, 35.0, 40.0};
+            
+            // Отримуємо індекси налаштувань з SharedPreferences
+            int updateFrequencyIndex = prefs.getInt(PREF_UPDATE_FREQUENCY, DEFAULT_UPDATE_FREQUENCY_INDEX);
+            int sensitivityIndex = prefs.getInt(PREF_SENSITIVITY, DEFAULT_SENSITIVITY_INDEX);
+            int smoothingIndex = prefs.getInt(PREF_SMOOTHING, DEFAULT_SMOOTHING_INDEX);
+            int minNoiseLevelIndex = prefs.getInt(PREF_MIN_NOISE_LEVEL, DEFAULT_MIN_NOISE_LEVEL_INDEX);
+            
+            // Проводимо валідацію індексів
+            updateFrequencyIndex = Math.min(Math.max(0, updateFrequencyIndex), UPDATE_FREQUENCIES.length - 1);
+            sensitivityIndex = Math.min(Math.max(0, sensitivityIndex), SENSITIVITY_OFFSETS.length - 1);
+            smoothingIndex = Math.min(Math.max(0, smoothingIndex), SMOOTHING_FACTORS.length - 1);
+            minNoiseLevelIndex = Math.min(Math.max(0, minNoiseLevelIndex), MIN_NOISE_LEVELS.length - 1);
+            
+            // Застосовуємо значення
+            updateFrequency = UPDATE_FREQUENCIES[updateFrequencyIndex];
+            sensitivityOffset = SENSITIVITY_OFFSETS[sensitivityIndex];
+            smoothingFactor = SMOOTHING_FACTORS[smoothingIndex];
+            minNoiseDetectionLevel = MIN_NOISE_LEVELS[minNoiseLevelIndex];
+            
+            Log.d(TAG, "loadCalibrationSettings: Завантажено налаштування калібрування:");
+            Log.d(TAG, "loadCalibrationSettings: Частота оновлення: " + updateFrequency + " мс");
+            Log.d(TAG, "loadCalibrationSettings: Зміщення чутливості: " + sensitivityOffset + " dB");
+            Log.d(TAG, "loadCalibrationSettings: Коефіцієнт згладжування: " + smoothingFactor);
+            Log.d(TAG, "loadCalibrationSettings: Мінімальний рівень шуму: " + minNoiseDetectionLevel + " dB");
+        } catch (Exception e) {
+            Log.e(TAG, "loadCalibrationSettings: Помилка завантаження налаштувань калібрування", e);
+            // Встановлюємо значення за замовчуванням
+            updateFrequency = Constants.NOISE_UPDATE_INTERVAL;
+            sensitivityOffset = 0.0;
+            smoothingFactor = 0.3;
+            minNoiseDetectionLevel = Constants.MIN_VALID_DB;
+        }
+    }
+
+    private void cleanup() {
+        // Implementation of cleanup method
+    }
+} 

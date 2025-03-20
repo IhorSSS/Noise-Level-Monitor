@@ -1,0 +1,174 @@
+[
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable_ic_info_circle.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable/ic_info_circle.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable_ic_reset.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable/ic_reset.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable_ic_power_off.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable/ic_power_off.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/layout_activity_settings.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/menu_main_menu.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/menu/main_menu.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable-mdpi_ic_stat_kisspng_computer_icons.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable-mdpi/ic_stat_kisspng_computer_icons.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable-xhdpi_ic_stat_kisspng_computer_icons.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable-xhdpi/ic_stat_kisspng_computer_icons.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/xml_file_paths.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/xml/file_paths.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/xml_backup_rules.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/layout_activity_main.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable_ic_sort.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable/ic_sort.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable-xxhdpi_ic_stat_kisspng_computer_icons.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable-xxhdpi/ic_stat_kisspng_computer_icons.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable_ic_language.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable/ic_language.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/layout_item_noise_log.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/layout/item_noise_log.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable_ic_settings.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable/ic_settings.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/layout_activity_noise_logs.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/layout/activity_noise_logs.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable-xxxhdpi_ic_stat_kisspng_computer_icons.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable-xxxhdpi/ic_stat_kisspng_computer_icons.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable-hdpi_ic_stat_kisspng_computer_icons.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable-hdpi/ic_stat_kisspng_computer_icons.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/layout_reference_values_snackbar.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/layout/reference_values_snackbar.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable_snackbar_background.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable/snackbar_background.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable_ic_delete.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable/ic_delete.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/drawable_ic_info.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/drawable/ic_info.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/menu_logs_menu.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/menu/logs_menu.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-ldpi_ic_launcher.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-ldpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-release-32:/menu_settings_menu.xml.flat",
+        "source": "/Users/IS/.gradle/daemon/8.11.1/com.app.noiselevelmonitor.app-main-33:/menu/settings_menu.xml"
+    }
+]

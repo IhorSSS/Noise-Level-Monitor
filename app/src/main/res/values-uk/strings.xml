@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Main Activity -->
+    <string name="noise_level">Рівень шуму</string>
+    <string name="noise_level_format">%.1f дБ</string>
+    <string name="noise_level_placeholder">0.0 дБ</string>
+    <string name="status">Статус</string>
+    <string name="service_starting">Запуск сервісу...</string>
+    <string name="service_running">Сервіс працює</string>
+    <string name="service_stopped">Сервіс зупинено</string>
+    <string name="service_paused">Сервіс призупинено</string>
+    <string name="waiting_permissions">Очікування дозволів...</string>
+    <string name="background_monitoring_enabled">Фоновий моніторинг увімкнено</string>
+    <string name="background_monitoring_disabled">Фоновий моніторинг вимкнено</string>
+    
+    <!-- Buttons -->
+    <string name="button_pause">Пауза</string>
+    <string name="button_resume">Відновити</string>
+    <string name="button_restart">Перезапустити</string>
+    <string name="restart">Перезапустити</string>
+    <string name="button_reset_stats">Скинути статистику</string>
+    
+    <!-- Recording Status -->
+    <string name="recording_started">Запис розпочато</string>
+    <string name="recording_paused">@string/service_paused</string>
+    <string name="recording_resumed">Запис відновлено</string>
+    
+    <!-- Errors -->
+    <string name="error_prefix">Помилка: %1$s</string>
+    <string name="error_permissions">Для роботи додатку необхідні всі дозволи</string>
+    <string name="error_service_start">Помилка при запуску сервісу</string>
+    <string name="error_initialization">Помилка ініціалізації: %1$s</string>
+    <string name="error_state">Помилка стану: %1$s</string>
+    <string name="error_unexpected">Неочікувана помилка: %1$s</string>
+    <string name="error_data_retrieval">Помилка отримання даних: %1$s</string>
+    <string name="error_update_start">Помилка запуску оновлень: %1$s</string>
+    <string name="error_toggle_recording">Помилка при зміні стану запису</string>
+    <string name="error_mic">Помилка мікрофону</string>
+    <string name="error_processing">Помилка при обробці: %1$s</string>
+    <string name="error_receiver_setup">Помилка при налаштуванні receiver: %1$s</string>
+    <string name="error_initializing_recorder">Помилка при ініціалізації запису</string>
+    <string name="error_general">Сталася помилка</string>
+    <string name="permission_granted">надано</string>
+    <string name="permission_denied">не надано</string>
+    <string name="error_service_stop">Помилка при зупинці сервісу: %1$s: %2$s</string>
+    <string name="error_recording_toggle">Помилка при перемиканні запису: %1$s</string>
+    <string name="setting_up_speedometer">Налаштування спідометра...</string>
+    <string name="speedometer_setup_success">Налаштування спідометра завершено успішно</string>
+    <string name="error_speedometer_setup">Помилка при налаштуванні спідометра: %1$s</string>
+    <string name="error_rounded_corners">Помилка при встановленні заокруглених кутів: %1$s</string>
+    <string name="tooltip_shown_for">Снекбар показано для %1$s значення</string>
+    <string name="minimum">мінімального</string>
+    <string name="maximum">максимального</string>
+    <string name="error_generic">Помилка: %1$s</string>
+    <string name="error_media_state">Помилка стану медіа: %1$s</string>
+    
+    <!-- Menu -->
+    <string name="menu_language">Мова</string>
+    <string name="menu_language_uk">Українська</string>
+    <string name="menu_language_en">English</string>
+    
+    <!-- Notifications -->
+    <string name="notification_noise_level">Рівень шуму (дБ): %.1f</string>
+    <string name="stats_reset">Статистику скинуто</string>
+    
+    <!-- New strings for info icons -->
+    <string name="info_icon_description">Інформація про час вимірювання</string>
+    <string name="min_noise_time_format">Мінімальний рівень шуму (%1$.1f дБ) був зафіксовано %2$s</string>
+    <string name="max_noise_time_format">Максимальний рівень шуму (%1$.1f дБ) був зафіксовано %2$s</string>
+    <string name="recorded_at">Зареєстровано:</string>
+    
+    <!-- New strings for settings -->
+    <string name="settings_title">Налаштування</string>
+    <string name="language_settings">Мова</string>
+    <string name="ukrainian">Українська</string>
+    <string name="english">Англійська</string>
+    
+    <!-- Theme settings -->
+    <string name="theme_settings">Налаштування теми</string>
+    <string name="theme_light">Світла</string>
+    <string name="theme_dark">Темна</string>
+    <string name="theme_system">Системна</string>
+    
+    <!-- Statistics labels -->
+    <string name="min_noise_label">Мін: %.1f</string>
+    <string name="avg_noise_label">Сер: %.1f</string>
+    <string name="max_noise_label">Макс: %.1f</string>
+    
+    <!-- Tooltip prefixes -->
+    <string name="min_tooltip_prefix">Мінімум записано: </string>
+    <string name="max_tooltip_prefix">Максимум записано: </string>
+    <string name="no_data_available">Дані ще не доступні</string>
+    
+    <!-- Налаштування фонового сервісу -->
+    <string name="background_service_settings">Фонова робота</string>
+    <string name="background_service_description">Увімкнути фоновий моніторинг та сповіщення, коли додаток не активний</string>
+    <string name="background_service_enabled">Фоновий моніторинг увімкнено</string>
+    <string name="background_service_disabled">Фоновий моніторинг вимкнено</string>
+    
+    <!-- Noise level reference values -->
+    <string name="noise_reference_title">Референсні значення дБ</string>
+    <string name="speedometer_info_description">Інформація про рівні шуму</string>
+    <string name="noise_reference_close">Закрити</string>
+    <string name="noise_reference_content">Типові рівні шуму:\n\n• 0-10: Ледь чутно\n• 20-30: Шепіт, тиха кімната\n• 40-50: Звичайна розмова\n• 60-70: Офіс, дорожній рух\n• 80-90: Фен, шумний цех\n• 100-110: Електроінструменти, гучна музика\n• 120+: Больовий поріг, ризик пошкодження слуху</string>
+    <string name="noise_level_1">• 0-10 дБ: Ледь чутно</string>
+    <string name="noise_level_2">• 20-30 дБ: Шепіт, тиха кімната</string>
+    <string name="noise_level_3">• 40-50 дБ: Звичайна розмова</string>
+    <string name="noise_level_4">• 60-70 дБ: Офіс, дорожній рух</string>
+    <string name="noise_level_5">• 80-90 дБ: Фен, шумний цех</string>
+    <string name="noise_level_6">• 100-110 дБ: Електроінструменти, гучна музика</string>
+    <string name="noise_level_7">• 120+ дБ: Больовий поріг, ризик пошкодження слуху</string>
+    <string name="close">Закрити</string>
+    
+    <!-- Add these new strings for the calibration feature (Ukrainian translations) -->
+    <string name="calibration_settings">Калібрування</string>
+    <string name="reset_all">Скинути все</string>
+    <string name="reset_to_default">Скинути</string>
+    <string name="noise_update_frequency">Частота оновлення</string>
+    <string name="noise_sensitivity">Чутливість</string>
+    <string name="noise_smoothing">Згладжування</string>
+    <string name="min_detectable_noise">Мінімальний шум</string>
+    <string name="milliseconds">мс</string>
+    <string name="seconds">сек</string>
+    <string name="none">Відсутнє</string>
+    <string name="reset_calibration_confirm_title">Скинути калібрування</string>
+    <string name="reset_calibration_confirm_message">Ви впевнені, що хочете скинути всі налаштування калібрування до заводських значень?</string>
+    <string name="yes">Так</string>
+    <string name="no">Ні</string>
+    <string name="reset_calibration_success">Налаштування калібрування скинуто до стандартних</string>
+    <string name="calibration_updated">Налаштування калібрування оновлено</string>
+    <string name="too_many_errors_stopping">Забагато помилок, зупиняємо моніторинг шуму</string>
+    <string name="error_starting_noise_monitoring">Помилка запуску моніторингу шуму</string>
+    <string name="battery_optimization_title">Оптимізація батареї</string>
+    <string name="battery_optimization_message">Для точних вимірювань у фоновому режимі вимкніть оптимізацію батареї для цього додатку</string>
+    <string name="battery_optimization_button">Вимкнути оптимізацію</string>
+    <string name="battery_optimization_negative">Пропустити</string>
+    <string name="battery_optimization_hint">Будь ласка, вимкніть оптимізацію батареї на наступному екрані</string>
+    <string name="battery_optimization_error">Не вдалося відкрити налаштування оптимізації батареї</string>
+    <string name="battery_optimization_warning">Додаток може зупинитися у фоновому режимі без вимкнення оптимізації батареї</string>
+    
+    <!-- Logging Feature -->
+    <string name="logging_settings_title">Налаштування логування</string>
+    <string name="logging_enabled">Увімкнути логування</string>
+    <string name="logging_explanation">Логування зберігає показники шуму для подальшого перегляду</string>
+    <string name="logging_background_explanation">Фонове логування працює тільки при увімкненому фоновому моніторингу</string>
+    <string name="logging_sample_frequency">Частота вимірювань</string>
+    <string name="logging_retention_period">Період зберігання логів</string>
+    <string name="view_logs">Переглянути логи</string>
+    <string name="clear_logs">Очистити всі логи</string>
+    <string name="logs_cleared">Всі логи були очищені</string>
+    <string name="confirm_clear_logs">Ви впевнені, що хочете видалити всі логи?</string>
+    <string name="logs_title">Логи шуму</string>
+    <string name="no_logs_available">Немає доступних логів</string>
+    <string name="export_csv">Експорт CSV</string>
+    <string name="no_logs_for_export">Немає логів для експорту</string>
+    <string name="sample_rate_05s">0.5 секунди</string>
+    <string name="sample_rate_1s">1 секунда</string>
+    <string name="sample_rate_5s">5 секунд</string>
+    <string name="sample_rate_10s">10 секунд</string>
+    <string name="retention_1m">1 хвилина</string>
+    <string name="retention_5m">5 хвилин</string>
+    <string name="retention_10m">10 хвилин</string>
+    <string name="retention_1h">1 година</string>
+    <string name="retention_2h">2 години</string>
+    <string name="retention_3h">3 години</string>
+    <string name="retention_5h">5 годин</string>
+    <string name="retention_10h">10 годин</string>
+    <string name="retention_24h">24 години</string>
+    <string name="log_date_time_format">%1$s о %2$s</string>
+    <string name="log_noise_value">%1$.1f дБ</string>
+    
+    <!-- Нові рядки для функціональності паузи логування -->
+    <string name="logging_pause">Призупинити логування</string>
+    <string name="logging_resume">Відновити логування</string>
+    <string name="logging_paused">Логування призупинено</string>
+    <string name="logging_resumed">Логування відновлено</string>
+    <string name="logging_disabled_warning">Вимкнення логування очистить всі логи. Продовжити?</string>
+    <string name="logging_disabled_warning_title">Попередження</string>
+    
+    <!-- Power off and sort functionality -->
+    <string name="power_off">Вимкнути</string>
+    <string name="power_off_confirmation">Ви впевнені, що хочете закрити додаток? Це повністю зупинить моніторинг.</string>
+    <string name="power_off_confirmation_title">Закрити додаток</string>
+    <string name="sort">Сортувати</string>
+    <string name="sort_noise_ascending">Від найтихішого</string>
+    <string name="sort_noise_descending">Від найгучнішого</string>
+    <string name="sort_time">За часом (за замовчуванням)</string>
+    <string name="sort_by">Сортувати за</string>
+    
+    <!-- CSV Export Headers -->
+    <string name="csv_export_header">CSV експорт з додатку Моніторинг Рівня Шуму</string>
+    <string name="csv_date_format_info">Формат дати: ДД.ММ.РРРР, Формат часу: ГГ:ХХ:СС</string>
+    <string name="csv_column_headers">Дата,Час,Рівень шуму (дБ)</string>
+</resources> 

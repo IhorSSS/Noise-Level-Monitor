@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Стиль для меню спливаючого вікна (світла тема) -->
+    <style name="PopupMenuStyle" parent="Widget.MaterialComponents.PopupMenu">
+        <item name="android:textColor">@color/md_theme_light_onSurface</item>
+        <item name="android:popupBackground">@color/md_theme_light_surface</item>
+    </style>
+    
+    <!-- Стиль для меню спливаючого вікна (темна тема) -->
+    <style name="PopupMenuStyle.Dark" parent="Widget.MaterialComponents.PopupMenu">
+        <item name="android:textColor">@color/md_theme_dark_onSurface</item>
+        <item name="android:popupBackground">@color/md_theme_dark_surface</item>
+    </style>
+</resources> 

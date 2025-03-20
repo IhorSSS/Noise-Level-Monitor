@@ -1,0 +1,3655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.9.0" type="incidents">
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/NoiseLogAdapter.java"
+            line="84"
+            column="17"
+            startOffset="2816"
+            endLine="84"
+            endColumn="64"
+            endOffset="2863"/>
+    </incident>
+
+    <incident
+        id="OldTargetApi"
+        severity="warning"
+        message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the `android.os.Build.VERSION_CODES` javadoc for details.">
+        <fix-replace
+            description="Update targetSdkVersion to 35"
+            oldString="34"
+            replacement="35"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="12"
+            column="9"
+            startOffset="213"
+            endLine="12"
+            endColumn="21"
+            endOffset="225"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of `compileSdkVersion` than 34 is available: 35">
+        <fix-replace
+            description="Set compileSdkVersion to 35"
+            oldString="34"
+            replacement="35"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="7"
+            column="5"
+            startOffset="102"
+            endLine="7"
+            endColumn="18"
+            endOffset="115"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.0">
+        <fix-replace
+            description="Change to 1.7.0"
+            family="Update versions"
+            oldString="1.6.1"
+            replacement="1.7.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="41"
+            column="20"
+            startOffset="1006"
+            endLine="41"
+            endColumn="56"
+            endOffset="1042"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.core:core than 1.9.0 is available: 1.15.0">
+        <fix-replace
+            description="Change to 1.15.0"
+            family="Update versions"
+            oldString="1.9.0"
+            replacement="1.15.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="42"
+            column="20"
+            startOffset="1062"
+            endLine="42"
+            endColumn="46"
+            endOffset="1088"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.constraintlayout:constraintlayout than 2.1.4 is available: 2.2.1">
+        <fix-replace
+            description="Change to 2.2.1"
+            family="Update versions"
+            oldString="2.1.4"
+            replacement="2.2.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="43"
+            column="20"
+            startOffset="1108"
+            endLine="43"
+            endColumn="70"
+            endOffset="1158"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.material:material than 1.11.0 is available: 1.12.0">
+        <fix-replace
+            description="Change to 1.12.0"
+            family="Update versions"
+            oldString="1.11.0"
+            replacement="1.12.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="45"
+            column="20"
+            startOffset="1240"
+            endLine="45"
+            endColumn="65"
+            endOffset="1285"/>
+    </incident>
+
+    <incident
+        id="UseAppTint"
+        severity="error"
+        message="Must use `app:tint` instead of `android:tint`">
+        <fix-composite
+            description="Set tint=&quot;?attr/colorOnSurface&quot; and Delete tint">
+            <fix-attribute
+                description="Set tint=&quot;?attr/colorOnSurface&quot;"
+                namespace="http://schemas.android.com/apk/res-auto"
+                attribute="tint"
+                value="?attr/colorOnSurface"/>
+            <fix-attribute
+                description="Delete tint"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="tint"/>
+        </fix-composite>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="125"
+            column="33"
+            startOffset="5969"
+            endLine="125"
+            endColumn="68"
+            endOffset="6004"/>
+    </incident>
+
+    <incident
+        id="UseAppTint"
+        severity="error"
+        message="Must use `app:tint` instead of `android:tint`">
+        <fix-composite
+            description="Set tint=&quot;?attr/colorOnSurface&quot; and Delete tint">
+            <fix-attribute
+                description="Set tint=&quot;?attr/colorOnSurface&quot;"
+                namespace="http://schemas.android.com/apk/res-auto"
+                attribute="tint"
+                value="?attr/colorOnSurface"/>
+            <fix-attribute
+                description="Delete tint"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="tint"/>
+        </fix-composite>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="152"
+            column="33"
+            startOffset="7466"
+            endLine="152"
+            endColumn="68"
+            endOffset="7501"/>
+    </incident>
+
+    <incident
+        id="StringFormatInvalid"
+        severity="error"
+        message="Format string &apos;`error_service_start`&apos; is not a valid format string so it should not be passed to `String.format`">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/MainActivity.java"
+            line="680"
+            column="31"
+            startOffset="30197"
+            endLine="680"
+            endColumn="86"
+            endOffset="30252"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="61"
+            column="5"
+            startOffset="3514"
+            endLine="61"
+            endColumn="68"
+            endOffset="3577"
+            message="This definition does not require arguments"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;app_name&quot; is not translated in &quot;uk&quot; (Ukrainian) or &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="4"
+            column="13"
+            startOffset="101"
+            endLine="4"
+            endColumn="28"
+            endOffset="116"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_level_format&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="7"
+            column="13"
+            startOffset="191"
+            endLine="7"
+            endColumn="38"
+            endOffset="216"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_level_placeholder&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="8"
+            column="13"
+            startOffset="246"
+            endLine="8"
+            endColumn="43"
+            endOffset="276"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;min_noise_label&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="9"
+            column="13"
+            startOffset="305"
+            endLine="9"
+            endColumn="35"
+            endOffset="327"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;avg_noise_label&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="10"
+            column="13"
+            startOffset="359"
+            endLine="10"
+            endColumn="35"
+            endOffset="381"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;max_noise_label&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="11"
+            column="13"
+            startOffset="413"
+            endLine="11"
+            endColumn="35"
+            endOffset="435"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;notification_noise_level&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="12"
+            column="13"
+            startOffset="467"
+            endLine="12"
+            endColumn="44"
+            endOffset="498"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;min_noise_time_format&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="13"
+            column="13"
+            startOffset="543"
+            endLine="13"
+            endColumn="41"
+            endOffset="571"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;max_noise_time_format&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="14"
+            column="13"
+            startOffset="646"
+            endLine="14"
+            endColumn="41"
+            endOffset="674"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_prefix&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="17"
+            column="13"
+            startOffset="788"
+            endLine="17"
+            endColumn="32"
+            endOffset="807"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_initialization&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="18"
+            column="13"
+            startOffset="841"
+            endLine="18"
+            endColumn="40"
+            endOffset="868"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_state&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="19"
+            column="13"
+            startOffset="917"
+            endLine="19"
+            endColumn="31"
+            endOffset="935"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_unexpected&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="20"
+            column="13"
+            startOffset="975"
+            endLine="20"
+            endColumn="36"
+            endOffset="998"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_data_retrieval&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="21"
+            column="13"
+            startOffset="1043"
+            endLine="21"
+            endColumn="40"
+            endOffset="1070"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_update_start&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="22"
+            column="13"
+            startOffset="1119"
+            endLine="22"
+            endColumn="38"
+            endOffset="1144"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_processing&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="23"
+            column="13"
+            startOffset="1191"
+            endLine="23"
+            endColumn="36"
+            endOffset="1214"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_receiver_setup&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="24"
+            column="13"
+            startOffset="1266"
+            endLine="24"
+            endColumn="40"
+            endOffset="1293"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_service_stop&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="25"
+            column="13"
+            startOffset="1347"
+            endLine="25"
+            endColumn="38"
+            endOffset="1372"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_recording_toggle&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="26"
+            column="13"
+            startOffset="1429"
+            endLine="26"
+            endColumn="42"
+            endOffset="1458"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_speedometer_setup&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="27"
+            column="13"
+            startOffset="1511"
+            endLine="27"
+            endColumn="43"
+            endOffset="1541"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_rounded_corners&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="28"
+            column="13"
+            startOffset="1598"
+            endLine="28"
+            endColumn="41"
+            endOffset="1626"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_generic&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="29"
+            column="13"
+            startOffset="1684"
+            endLine="29"
+            endColumn="33"
+            endOffset="1704"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_media_state&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="30"
+            column="13"
+            startOffset="1738"
+            endLine="30"
+            endColumn="37"
+            endOffset="1762"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_initializing_recorder&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="31"
+            column="13"
+            startOffset="1808"
+            endLine="31"
+            endColumn="47"
+            endOffset="1842"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_general&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="32"
+            column="13"
+            startOffset="1892"
+            endLine="32"
+            endColumn="33"
+            endOffset="1912"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;tooltip_shown_for&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="33"
+            column="13"
+            startOffset="1952"
+            endLine="33"
+            endColumn="37"
+            endOffset="1976"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;settings_title&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="36"
+            column="13"
+            startOffset="2066"
+            endLine="36"
+            endColumn="34"
+            endOffset="2087"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_level&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="37"
+            column="13"
+            startOffset="2118"
+            endLine="37"
+            endColumn="31"
+            endOffset="2136"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;info_icon_description&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="38"
+            column="13"
+            startOffset="2170"
+            endLine="38"
+            endColumn="41"
+            endOffset="2198"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;button_reset_stats&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="39"
+            column="13"
+            startOffset="2255"
+            endLine="39"
+            endColumn="38"
+            endOffset="2280"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;status&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="40"
+            column="13"
+            startOffset="2319"
+            endLine="40"
+            endColumn="26"
+            endOffset="2332"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;button_pause&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="41"
+            column="13"
+            startOffset="2361"
+            endLine="41"
+            endColumn="32"
+            endOffset="2380"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;button_resume&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="42"
+            column="13"
+            startOffset="2408"
+            endLine="42"
+            endColumn="33"
+            endOffset="2428"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;button_restart&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="43"
+            column="13"
+            startOffset="2457"
+            endLine="43"
+            endColumn="34"
+            endOffset="2478"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;restart&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="44"
+            column="13"
+            startOffset="2508"
+            endLine="44"
+            endColumn="27"
+            endOffset="2522"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;menu_language&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="45"
+            column="13"
+            startOffset="2552"
+            endLine="45"
+            endColumn="33"
+            endOffset="2572"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;menu_language_en&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="46"
+            column="13"
+            startOffset="2603"
+            endLine="46"
+            endColumn="36"
+            endOffset="2626"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;menu_language_uk&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="47"
+            column="13"
+            startOffset="2656"
+            endLine="47"
+            endColumn="36"
+            endOffset="2679"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;recording_started&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="48"
+            column="13"
+            startOffset="2711"
+            endLine="48"
+            endColumn="37"
+            endOffset="2735"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;recording_paused&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="49"
+            column="13"
+            startOffset="2775"
+            endLine="49"
+            endColumn="36"
+            endOffset="2798"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;recording_resumed&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="50"
+            column="13"
+            startOffset="2837"
+            endLine="50"
+            endColumn="37"
+            endOffset="2861"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;language_settings&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="51"
+            column="13"
+            startOffset="2901"
+            endLine="51"
+            endColumn="37"
+            endOffset="2925"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;ukrainian&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="52"
+            column="13"
+            startOffset="2956"
+            endLine="52"
+            endColumn="29"
+            endOffset="2972"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;english&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="53"
+            column="13"
+            startOffset="3004"
+            endLine="53"
+            endColumn="27"
+            endOffset="3018"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;service_running&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="54"
+            column="13"
+            startOffset="3048"
+            endLine="54"
+            endColumn="35"
+            endOffset="3070"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;service_paused&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="55"
+            column="13"
+            startOffset="3111"
+            endLine="55"
+            endColumn="34"
+            endOffset="3132"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;service_stopped&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="56"
+            column="13"
+            startOffset="3172"
+            endLine="56"
+            endColumn="35"
+            endOffset="3194"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;service_starting&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="57"
+            column="13"
+            startOffset="3232"
+            endLine="57"
+            endColumn="36"
+            endOffset="3255"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;waiting_permissions&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="58"
+            column="13"
+            startOffset="3297"
+            endLine="58"
+            endColumn="39"
+            endOffset="3323"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_mic&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="59"
+            column="13"
+            startOffset="3372"
+            endLine="59"
+            endColumn="29"
+            endOffset="3388"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_permissions&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="60"
+            column="13"
+            startOffset="3427"
+            endLine="60"
+            endColumn="37"
+            endOffset="3451"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_service_start&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="61"
+            column="13"
+            startOffset="3522"
+            endLine="61"
+            endColumn="39"
+            endOffset="3548"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_toggle_recording&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="62"
+            column="13"
+            startOffset="3590"
+            endLine="62"
+            endColumn="42"
+            endOffset="3619"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;permission_granted&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="63"
+            column="13"
+            startOffset="3678"
+            endLine="63"
+            endColumn="38"
+            endOffset="3703"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;permission_denied&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="64"
+            column="13"
+            startOffset="3733"
+            endLine="64"
+            endColumn="37"
+            endOffset="3757"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;setting_up_speedometer&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="65"
+            column="13"
+            startOffset="3786"
+            endLine="65"
+            endColumn="42"
+            endOffset="3815"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;speedometer_setup_success&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="66"
+            column="13"
+            startOffset="3863"
+            endLine="66"
+            endColumn="45"
+            endOffset="3895"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;minimum&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="67"
+            column="13"
+            startOffset="3958"
+            endLine="67"
+            endColumn="27"
+            endOffset="3972"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;maximum&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="68"
+            column="13"
+            startOffset="4002"
+            endLine="68"
+            endColumn="27"
+            endOffset="4016"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;recorded_at&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="69"
+            column="13"
+            startOffset="4046"
+            endLine="69"
+            endColumn="31"
+            endOffset="4064"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;stats_reset&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="70"
+            column="13"
+            startOffset="4099"
+            endLine="70"
+            endColumn="31"
+            endOffset="4117"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;min_tooltip_prefix&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="71"
+            column="13"
+            startOffset="4166"
+            endLine="71"
+            endColumn="38"
+            endOffset="4191"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;max_tooltip_prefix&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="72"
+            column="13"
+            startOffset="4235"
+            endLine="72"
+            endColumn="38"
+            endOffset="4260"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;no_data_available&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="73"
+            column="13"
+            startOffset="4304"
+            endLine="73"
+            endColumn="37"
+            endOffset="4328"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;theme_settings&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="76"
+            column="13"
+            startOffset="4408"
+            endLine="76"
+            endColumn="34"
+            endOffset="4429"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;theme_light&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="77"
+            column="13"
+            startOffset="4466"
+            endLine="77"
+            endColumn="31"
+            endOffset="4484"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;theme_dark&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="78"
+            column="13"
+            startOffset="4512"
+            endLine="78"
+            endColumn="30"
+            endOffset="4529"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;theme_system&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="79"
+            column="13"
+            startOffset="4556"
+            endLine="79"
+            endColumn="32"
+            endOffset="4575"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;background_service_settings&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="82"
+            column="13"
+            startOffset="4652"
+            endLine="82"
+            endColumn="47"
+            endOffset="4686"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;background_service_description&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="83"
+            column="13"
+            startOffset="4727"
+            endLine="83"
+            endColumn="50"
+            endOffset="4764"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;background_service_enabled&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="84"
+            column="13"
+            startOffset="4856"
+            endLine="84"
+            endColumn="46"
+            endOffset="4889"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;background_service_disabled&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="85"
+            column="13"
+            startOffset="4941"
+            endLine="85"
+            endColumn="47"
+            endOffset="4975"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;battery_optimization_title&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="88"
+            column="13"
+            startOffset="5075"
+            endLine="88"
+            endColumn="46"
+            endOffset="5108"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;battery_optimization_message&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="89"
+            column="13"
+            startOffset="5151"
+            endLine="89"
+            endColumn="48"
+            endOffset="5186"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;battery_optimization_button&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="90"
+            column="13"
+            startOffset="5295"
+            endLine="90"
+            endColumn="47"
+            endOffset="5329"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;battery_optimization_negative&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="91"
+            column="13"
+            startOffset="5372"
+            endLine="91"
+            endColumn="49"
+            endOffset="5408"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;battery_optimization_hint&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="92"
+            column="13"
+            startOffset="5435"
+            endLine="92"
+            endColumn="45"
+            endOffset="5467"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;battery_optimization_error&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="93"
+            column="13"
+            startOffset="5544"
+            endLine="93"
+            endColumn="46"
+            endOffset="5577"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;battery_optimization_warning&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="94"
+            column="13"
+            startOffset="5644"
+            endLine="94"
+            endColumn="48"
+            endOffset="5679"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_reference_title&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="97"
+            column="13"
+            startOffset="5818"
+            endLine="97"
+            endColumn="41"
+            endOffset="5846"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;speedometer_info_description&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="98"
+            column="13"
+            startOffset="5888"
+            endLine="98"
+            endColumn="48"
+            endOffset="5923"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_reference_close&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="99"
+            column="13"
+            startOffset="5976"
+            endLine="99"
+            endColumn="41"
+            endOffset="6004"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_reference_content&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="100"
+            column="13"
+            startOffset="6032"
+            endLine="100"
+            endColumn="43"
+            endOffset="6062"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_level_1&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="101"
+            column="13"
+            startOffset="6329"
+            endLine="101"
+            endColumn="33"
+            endOffset="6349"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_level_2&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="102"
+            column="13"
+            startOffset="6397"
+            endLine="102"
+            endColumn="33"
+            endOffset="6417"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_level_3&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="103"
+            column="13"
+            startOffset="6471"
+            endLine="103"
+            endColumn="33"
+            endOffset="6491"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_level_4&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="104"
+            column="13"
+            startOffset="6545"
+            endLine="104"
+            endColumn="33"
+            endOffset="6565"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_level_5&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="105"
+            column="13"
+            startOffset="6620"
+            endLine="105"
+            endColumn="33"
+            endOffset="6640"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_level_6&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="106"
+            column="13"
+            startOffset="6699"
+            endLine="106"
+            endColumn="33"
+            endOffset="6719"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_level_7&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="107"
+            column="13"
+            startOffset="6779"
+            endLine="107"
+            endColumn="33"
+            endOffset="6799"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;close&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="108"
+            column="13"
+            startOffset="6861"
+            endLine="108"
+            endColumn="25"
+            endOffset="6873"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;background_monitoring_enabled&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="111"
+            column="13"
+            startOffset="6934"
+            endLine="111"
+            endColumn="49"
+            endOffset="6970"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;background_monitoring_disabled&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="112"
+            column="13"
+            startOffset="7022"
+            endLine="112"
+            endColumn="50"
+            endOffset="7059"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;calibration_settings&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="115"
+            column="13"
+            startOffset="7180"
+            endLine="115"
+            endColumn="40"
+            endOffset="7207"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;reset_all&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="116"
+            column="13"
+            startOffset="7241"
+            endLine="116"
+            endColumn="29"
+            endOffset="7257"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;reset_to_default&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="117"
+            column="13"
+            startOffset="7289"
+            endLine="117"
+            endColumn="36"
+            endOffset="7312"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_update_frequency&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="118"
+            column="13"
+            startOffset="7351"
+            endLine="118"
+            endColumn="42"
+            endOffset="7380"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_sensitivity&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="119"
+            column="13"
+            startOffset="7419"
+            endLine="119"
+            endColumn="37"
+            endOffset="7443"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;noise_smoothing&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="120"
+            column="13"
+            startOffset="7477"
+            endLine="120"
+            endColumn="35"
+            endOffset="7499"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;min_detectable_noise&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="121"
+            column="13"
+            startOffset="7531"
+            endLine="121"
+            endColumn="40"
+            endOffset="7558"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;milliseconds&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="122"
+            column="13"
+            startOffset="7605"
+            endLine="122"
+            endColumn="32"
+            endOffset="7624"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;seconds&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="123"
+            column="13"
+            startOffset="7649"
+            endLine="123"
+            endColumn="27"
+            endOffset="7663"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;none&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="124"
+            column="13"
+            startOffset="7689"
+            endLine="124"
+            endColumn="24"
+            endOffset="7700"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;reset_calibration_confirm_title&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="125"
+            column="13"
+            startOffset="7727"
+            endLine="125"
+            endColumn="51"
+            endOffset="7765"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;reset_calibration_confirm_message&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="126"
+            column="13"
+            startOffset="7805"
+            endLine="126"
+            endColumn="53"
+            endOffset="7845"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;yes&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="127"
+            column="13"
+            startOffset="7944"
+            endLine="127"
+            endColumn="23"
+            endOffset="7954"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;no&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="128"
+            column="13"
+            startOffset="7980"
+            endLine="128"
+            endColumn="22"
+            endOffset="7989"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;reset_calibration_success&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="129"
+            column="13"
+            startOffset="8014"
+            endLine="129"
+            endColumn="45"
+            endOffset="8046"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;calibration_updated&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="130"
+            column="13"
+            startOffset="8117"
+            endLine="130"
+            endColumn="39"
+            endOffset="8143"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;too_many_errors_stopping&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="131"
+            column="13"
+            startOffset="8194"
+            endLine="131"
+            endColumn="44"
+            endOffset="8225"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;error_starting_noise_monitoring&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="132"
+            column="13"
+            startOffset="8290"
+            endLine="132"
+            endColumn="51"
+            endOffset="8328"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logging_settings_title&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="135"
+            column="13"
+            startOffset="8416"
+            endLine="135"
+            endColumn="42"
+            endOffset="8445"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logging_enabled&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="136"
+            column="13"
+            startOffset="8484"
+            endLine="136"
+            endColumn="35"
+            endOffset="8506"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logging_explanation&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="137"
+            column="13"
+            startOffset="8543"
+            endLine="137"
+            endColumn="39"
+            endOffset="8569"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logging_background_explanation&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="138"
+            column="13"
+            startOffset="8637"
+            endLine="138"
+            endColumn="50"
+            endOffset="8674"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logging_sample_frequency&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="139"
+            column="13"
+            startOffset="8764"
+            endLine="139"
+            endColumn="44"
+            endOffset="8795"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logging_retention_period&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="140"
+            column="13"
+            startOffset="8834"
+            endLine="140"
+            endColumn="44"
+            endOffset="8865"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;view_logs&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="141"
+            column="13"
+            startOffset="8908"
+            endLine="141"
+            endColumn="29"
+            endOffset="8924"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;clear_logs&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="142"
+            column="13"
+            startOffset="8956"
+            endLine="142"
+            endColumn="30"
+            endOffset="8973"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logs_cleared&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="143"
+            column="13"
+            startOffset="9010"
+            endLine="143"
+            endColumn="32"
+            endOffset="9029"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;confirm_clear_logs&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="144"
+            column="13"
+            startOffset="9078"
+            endLine="144"
+            endColumn="38"
+            endOffset="9103"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logs_title&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="145"
+            column="13"
+            startOffset="9167"
+            endLine="145"
+            endColumn="30"
+            endOffset="9184"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;no_logs_available&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="146"
+            column="13"
+            startOffset="9217"
+            endLine="146"
+            endColumn="37"
+            endOffset="9241"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;export_csv&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="147"
+            column="13"
+            startOffset="9281"
+            endLine="147"
+            endColumn="30"
+            endOffset="9298"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;no_logs_for_export&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="148"
+            column="13"
+            startOffset="9331"
+            endLine="148"
+            endColumn="38"
+            endOffset="9356"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;sample_rate_05s&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="149"
+            column="13"
+            startOffset="9407"
+            endLine="149"
+            endColumn="35"
+            endOffset="9429"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;sample_rate_1s&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="150"
+            column="13"
+            startOffset="9463"
+            endLine="150"
+            endColumn="34"
+            endOffset="9484"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;sample_rate_5s&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="151"
+            column="13"
+            startOffset="9515"
+            endLine="151"
+            endColumn="34"
+            endOffset="9536"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;sample_rate_10s&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="152"
+            column="13"
+            startOffset="9568"
+            endLine="152"
+            endColumn="35"
+            endOffset="9590"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;retention_1m&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="153"
+            column="13"
+            startOffset="9623"
+            endLine="153"
+            endColumn="32"
+            endOffset="9642"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;retention_5m&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="154"
+            column="13"
+            startOffset="9673"
+            endLine="154"
+            endColumn="32"
+            endOffset="9692"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;retention_10m&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="155"
+            column="13"
+            startOffset="9724"
+            endLine="155"
+            endColumn="33"
+            endOffset="9744"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;retention_1h&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="156"
+            column="13"
+            startOffset="9777"
+            endLine="156"
+            endColumn="32"
+            endOffset="9796"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;retention_2h&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="157"
+            column="13"
+            startOffset="9825"
+            endLine="157"
+            endColumn="32"
+            endOffset="9844"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;retention_3h&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="158"
+            column="13"
+            startOffset="9874"
+            endLine="158"
+            endColumn="32"
+            endOffset="9893"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;retention_5h&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="159"
+            column="13"
+            startOffset="9923"
+            endLine="159"
+            endColumn="32"
+            endOffset="9942"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;retention_10h&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="160"
+            column="13"
+            startOffset="9972"
+            endLine="160"
+            endColumn="33"
+            endOffset="9992"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;retention_24h&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="161"
+            column="13"
+            startOffset="10023"
+            endLine="161"
+            endColumn="33"
+            endOffset="10043"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;log_date_time_format&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="162"
+            column="13"
+            startOffset="10074"
+            endLine="162"
+            endColumn="40"
+            endOffset="10101"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;log_noise_value&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="163"
+            column="13"
+            startOffset="10136"
+            endLine="163"
+            endColumn="35"
+            endOffset="10158"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logging_pause&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="166"
+            column="13"
+            startOffset="10252"
+            endLine="166"
+            endColumn="33"
+            endOffset="10272"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logging_resume&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="167"
+            column="13"
+            startOffset="10308"
+            endLine="167"
+            endColumn="34"
+            endOffset="10329"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logging_paused&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="168"
+            column="13"
+            startOffset="10366"
+            endLine="168"
+            endColumn="34"
+            endOffset="10387"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logging_resumed&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="169"
+            column="13"
+            startOffset="10424"
+            endLine="169"
+            endColumn="35"
+            endOffset="10446"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logging_disabled_warning&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="170"
+            column="13"
+            startOffset="10484"
+            endLine="170"
+            endColumn="44"
+            endOffset="10515"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;logging_disabled_warning_title&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="171"
+            column="13"
+            startOffset="10586"
+            endLine="171"
+            endColumn="50"
+            endOffset="10623"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;power_off&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="174"
+            column="13"
+            startOffset="10704"
+            endLine="174"
+            endColumn="29"
+            endOffset="10720"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;power_off_confirmation&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="175"
+            column="13"
+            startOffset="10752"
+            endLine="175"
+            endColumn="42"
+            endOffset="10781"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;power_off_confirmation_title&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="176"
+            column="13"
+            startOffset="10889"
+            endLine="176"
+            endColumn="48"
+            endOffset="10924"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;sort&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="177"
+            column="13"
+            startOffset="10964"
+            endLine="177"
+            endColumn="24"
+            endOffset="10975"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;sort_noise_ascending&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="178"
+            column="13"
+            startOffset="11002"
+            endLine="178"
+            endColumn="40"
+            endOffset="11029"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;sort_noise_descending&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="179"
+            column="13"
+            startOffset="11070"
+            endLine="179"
+            endColumn="41"
+            endOffset="11098"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;sort_time&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="180"
+            column="13"
+            startOffset="11140"
+            endLine="180"
+            endColumn="29"
+            endOffset="11156"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;sort_by&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="181"
+            column="13"
+            startOffset="11201"
+            endLine="181"
+            endColumn="27"
+            endOffset="11215"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;csv_export_header&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="184"
+            column="13"
+            startOffset="11282"
+            endLine="184"
+            endColumn="37"
+            endOffset="11306"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;csv_date_format_info&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="185"
+            column="13"
+            startOffset="11368"
+            endLine="185"
+            endColumn="40"
+            endOffset="11395"/>
+    </incident>
+
+    <incident
+        id="MissingTranslation"
+        severity="error"
+        message="&quot;csv_column_headers&quot; is not translated in &quot;en&quot; (English)">
+        <fix-attribute
+            description="Mark non-translatable"
+            attribute="translatable"
+            value="false"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="186"
+            column="13"
+            startOffset="11464"
+            endLine="186"
+            endColumn="38"
+            endOffset="11489"/>
+    </incident>
+
+    <incident
+        id="NotifyDataSetChanged"
+        severity="warning"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/NoiseLogAdapter.java"
+            line="98"
+            column="9"
+            startOffset="3156"
+            endLine="98"
+            endColumn="31"
+            endOffset="3178"/>
+    </incident>
+
+    <incident
+        id="NotifyDataSetChanged"
+        severity="warning"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/NoiseLogsActivity.java"
+            line="422"
+            column="13"
+            startOffset="16291"
+            endLine="422"
+            endColumn="35"
+            endOffset="16313"/>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; `SDK_INT` is always >= 21">
+        <fix-data conditional="true"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/MainActivity.java"
+            line="1289"
+            column="25"
+            startOffset="57699"
+            endLine="1289"
+            endColumn="80"
+            endOffset="57754"/>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; `SDK_INT` is always >= 21">
+        <fix-data conditional="true"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/MainActivity.java"
+            line="1296"
+            column="25"
+            startOffset="58048"
+            endLine="1296"
+            endColumn="78"
+            endOffset="58101"/>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; `SDK_INT` is always >= 21">
+        <fix-data conditional="true"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/MainActivity.java"
+            line="1317"
+            column="25"
+            startOffset="59341"
+            endLine="1317"
+            endColumn="80"
+            endOffset="59396"/>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; `SDK_INT` is always >= 21">
+        <fix-data conditional="true"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/MainActivity.java"
+            line="1324"
+            column="25"
+            startOffset="59692"
+            endLine="1324"
+            endColumn="78"
+            endOffset="59745"/>
+    </incident>
+
+    <incident
+        id="VectorPath"
+        severity="warning"
+        message="Very long vector path (910 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_language.xml"
+            line="9"
+            column="27"
+            startOffset="310"
+            endLine="9"
+            endColumn="937"
+            endOffset="1220"/>
+    </incident>
+
+    <incident
+        id="VectorPath"
+        severity="warning"
+        message="Very long vector path (904 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_settings.xml"
+            line="9"
+            column="27"
+            startOffset="293"
+            endLine="9"
+            endColumn="931"
+            endOffset="1197"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="100"
+            column="44"
+            startOffset="6063"
+            endLine="100"
+            endColumn="288"
+            endOffset="6307"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="101"
+            column="34"
+            startOffset="6350"
+            endLine="101"
+            endColumn="59"
+            endOffset="6375"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="102"
+            column="34"
+            startOffset="6418"
+            endLine="102"
+            endColumn="65"
+            endOffset="6449"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="103"
+            column="34"
+            startOffset="6492"
+            endLine="103"
+            endColumn="65"
+            endOffset="6523"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-uk/strings.xml"
+            line="104"
+            column="44"
+            startOffset="5689"
+            endLine="104"
+            endColumn="290"
+            endOffset="5935"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="104"
+            column="34"
+            startOffset="6566"
+            endLine="104"
+            endColumn="66"
+            endOffset="6598"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-uk/strings.xml"
+            line="105"
+            column="34"
+            startOffset="5978"
+            endLine="105"
+            endColumn="55"
+            endOffset="5999"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="105"
+            column="34"
+            startOffset="6641"
+            endLine="105"
+            endColumn="70"
+            endOffset="6677"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-uk/strings.xml"
+            line="106"
+            column="34"
+            startOffset="6042"
+            endLine="106"
+            endColumn="65"
+            endOffset="6073"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="106"
+            column="34"
+            startOffset="6720"
+            endLine="106"
+            endColumn="71"
+            endOffset="6757"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-uk/strings.xml"
+            line="107"
+            column="34"
+            startOffset="6116"
+            endLine="107"
+            endColumn="62"
+            endOffset="6144"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-uk/strings.xml"
+            line="108"
+            column="34"
+            startOffset="6187"
+            endLine="108"
+            endColumn="64"
+            endOffset="6217"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-uk/strings.xml"
+            line="109"
+            column="34"
+            startOffset="6260"
+            endLine="109"
+            endColumn="61"
+            endOffset="6287"/>
+    </incident>
+
+    <incident
+        id="TypographyDashes"
+        severity="warning"
+        message="Replace &quot;-&quot; with an &quot;en dash&quot; character (–, &amp;#8211;) ?">
+        <fix-replace
+            description="Replace with –"
+            oldString="-"
+            replacement="–"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-uk/strings.xml"
+            line="110"
+            column="34"
+            startOffset="6330"
+            endLine="110"
+            endColumn="80"
+            endOffset="6376"/>
+    </incident>
+
+    <incident
+        id="TypographyEllipsis"
+        severity="warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?">
+        <fix-replace
+            description="Replace with …"
+            oldString="..."
+            replacement="…"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-uk/strings.xml"
+            line="8"
+            column="37"
+            startOffset="322"
+            endLine="8"
+            endColumn="54"
+            endOffset="339"/>
+    </incident>
+
+    <incident
+        id="TypographyEllipsis"
+        severity="warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?">
+        <fix-replace
+            description="Replace with …"
+            oldString="..."
+            replacement="…"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-uk/strings.xml"
+            line="12"
+            column="40"
+            startOffset="568"
+            endLine="12"
+            endColumn="62"
+            endOffset="590"/>
+    </incident>
+
+    <incident
+        id="TypographyEllipsis"
+        severity="warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?">
+        <fix-replace
+            description="Replace with …"
+            oldString="..."
+            replacement="…"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-uk/strings.xml"
+            line="47"
+            column="43"
+            startOffset="2680"
+            endLine="47"
+            endColumn="69"
+            endOffset="2706"/>
+    </incident>
+
+    <incident
+        id="TypographyEllipsis"
+        severity="warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?">
+        <fix-replace
+            description="Replace with …"
+            oldString="..."
+            replacement="…"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="57"
+            column="37"
+            startOffset="3256"
+            endLine="57"
+            endColumn="56"
+            endOffset="3275"/>
+    </incident>
+
+    <incident
+        id="TypographyEllipsis"
+        severity="warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?">
+        <fix-replace
+            description="Replace with …"
+            oldString="..."
+            replacement="…"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="58"
+            column="40"
+            startOffset="3324"
+            endLine="58"
+            endColumn="66"
+            endOffset="3350"/>
+    </incident>
+
+    <incident
+        id="TypographyEllipsis"
+        severity="warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?">
+        <fix-replace
+            description="Replace with …"
+            oldString="..."
+            replacement="…"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="65"
+            column="43"
+            startOffset="3816"
+            endLine="65"
+            endColumn="68"
+            endOffset="3841"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/mipmap-ldpi/ic_launcher.png"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/mipmap-mdpi/ic_launcher.png"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icon used as round icon did not have a circular shape">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/ic_launcher_round.png"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher_round.png"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/mipmap-mdpi/ic_launcher_round.png"/>
+    </incident>
+
+    <incident
+        id="MonochromeLauncherIcon"
+        severity="warning"
+        message="The application adaptive icon is missing a monochrome tag">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/mipmap-anydpi-v26/ic_launcher.xml"
+            line="2"
+            column="1"
+            startOffset="39"
+            endLine="5"
+            endColumn="17"
+            endOffset="265"/>
+    </incident>
+
+    <incident
+        id="MonochromeLauncherIcon"
+        severity="warning"
+        message="The application adaptive roundIcon is missing a monochrome tag">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/mipmap-anydpi-v26/ic_launcher_round.xml"
+            line="2"
+            column="1"
+            startOffset="39"
+            endLine="5"
+            endColumn="17"
+            endOffset="265"/>
+    </incident>
+
+    <incident
+        id="AlwaysShowAction"
+        severity="warning"
+        message="Prefer &quot;`ifRoom`&quot; instead of &quot;`always`&quot;">
+        <fix-replace
+            description="Replace with ifRoom"
+            oldPattern="(always)"
+            replacement="ifRoom"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/menu/logs_menu.xml"
+            line="9"
+            column="9"
+            startOffset="300"
+            endLine="9"
+            endColumn="34"
+            endOffset="325"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/menu/logs_menu.xml"
+            line="32"
+            column="9"
+            startOffset="1183"
+            endLine="32"
+            endColumn="34"
+            endOffset="1208"/>
+    </incident>
+
+    <incident
+        id="AlwaysShowAction"
+        severity="warning"
+        message="Prefer &quot;`ifRoom`&quot; instead of &quot;`always`&quot;">
+        <fix-replace
+            description="Replace with ifRoom"
+            oldPattern="(always)"
+            replacement="ifRoom"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/menu/main_menu.xml"
+            line="10"
+            column="9"
+            startOffset="379"
+            endLine="10"
+            endColumn="34"
+            endOffset="404"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/menu/main_menu.xml"
+            line="17"
+            column="9"
+            startOffset="612"
+            endLine="17"
+            endColumn="34"
+            endOffset="637"/>
+    </incident>
+
+</incidents>

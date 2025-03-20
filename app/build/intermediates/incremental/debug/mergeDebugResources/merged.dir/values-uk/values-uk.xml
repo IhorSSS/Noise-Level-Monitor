@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2" xmlns:ns2="http://schemas.android.com/tools">
+    <string-array name="logging_retention_periods">
+        <item>@string/retention_1m</item>
+        <item>@string/retention_5m</item>
+        <item>@string/retention_10m</item>
+        <item>@string/retention_1h</item>
+        <item>@string/retention_2h</item>
+        <item>@string/retention_3h</item>
+        <item>@string/retention_5h</item>
+        <item>@string/retention_10h</item>
+        <item>@string/retention_24h</item>
+    </string-array>
+    <string-array name="logging_sample_frequencies">
+        <item>@string/sample_rate_05s</item>
+        <item>@string/sample_rate_1s</item>
+        <item>@string/sample_rate_5s</item>
+        <item>@string/sample_rate_10s</item>
+    </string-array>
+    <plurals name="mtrl_badge_content_description">
+    <item quantity="one">%d нове сповіщення</item>
+    <item quantity="few">%d нові сповіщення</item>
+    <item quantity="many">%d нових сповіщень</item>
+    <item quantity="other">%d нового сповіщення</item>
+  </plurals>
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"Перейти на головну"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"Перейти вгору"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"Більше опцій"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"Готово"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"Показати всі"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"Вибрати програму"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"ЗНИЖКА"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"УВІМК."</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"пробіл"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"Введіть пошуковий запит…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"Очистити запит"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"Пошуковий запит"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"Пошук"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"Наіслати запит"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"Голосовий пошук"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Поділитися:"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Поділитися через додаток <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Згорнути"</string>
+    <string name="avg_noise_label">Сер: %.1f</string>
+    <string name="background_monitoring_disabled">Фоновий моніторинг вимкнено</string>
+    <string name="background_monitoring_enabled">Фоновий моніторинг увімкнено</string>
+    <string name="background_service_description">Увімкнути фоновий моніторинг та сповіщення, коли додаток не активний</string>
+    <string name="background_service_disabled">Фоновий моніторинг вимкнено</string>
+    <string name="background_service_enabled">Фоновий моніторинг увімкнено</string>
+    <string name="background_service_settings">Фонова робота</string>
+    <string name="battery_optimization_button">Вимкнути оптимізацію</string>
+    <string name="battery_optimization_error">Не вдалося відкрити налаштування оптимізації батареї</string>
+    <string name="battery_optimization_hint">Будь ласка, вимкніть оптимізацію батареї на наступному екрані</string>
+    <string name="battery_optimization_message">Для точних вимірювань у фоновому режимі вимкніть оптимізацію батареї для цього додатку</string>
+    <string name="battery_optimization_negative">Пропустити</string>
+    <string name="battery_optimization_title">Оптимізація батареї</string>
+    <string name="battery_optimization_warning">Додаток може зупинитися у фоновому режимі без вимкнення оптимізації батареї</string>
+    <string name="bottomsheet_action_collapse">Згорнути нижній екран</string>
+    <string name="bottomsheet_action_expand">Розгорнути нижній екран</string>
+    <string name="bottomsheet_action_expand_halfway">Розгорнути нижню половину</string>
+    <string name="bottomsheet_drag_handle_clicked">Маркер переміщення активовано подвійним дотиком</string>
+    <string name="bottomsheet_drag_handle_content_description">Маркер переміщення</string>
+    <string name="button_pause">Пауза</string>
+    <string name="button_reset_stats">Скинути статистику</string>
+    <string name="button_restart">Перезапустити</string>
+    <string name="button_resume">Відновити</string>
+    <string name="calibration_settings">Калібрування</string>
+    <string name="calibration_updated">Налаштування калібрування оновлено</string>
+    <string name="character_counter_content_description">Введено символів: %1$d з %2$d</string>
+    <string name="character_counter_overflowed_content_description">Перевищено ліміт символів: %1$d з %2$d</string>
+    <string name="clear_logs">Очистити всі логи</string>
+    <string name="clear_text_end_icon_content_description">Видалити текст</string>
+    <string name="close">Закрити</string>
+    <string name="confirm_clear_logs">Ви впевнені, що хочете видалити всі логи?</string>
+    <string name="csv_column_headers">Дата,Час,Рівень шуму (дБ)</string>
+    <string name="csv_date_format_info">Формат дати: ДД.ММ.РРРР, Формат часу: ГГ:ХХ:СС</string>
+    <string name="csv_export_header">CSV експорт з додатку Моніторинг Рівня Шуму</string>
+    <string name="english">Англійська</string>
+    <string name="error_data_retrieval">Помилка отримання даних: %1$s</string>
+    <string name="error_general">Сталася помилка</string>
+    <string name="error_generic">Помилка: %1$s</string>
+    <string name="error_icon_content_description">Помилка</string>
+    <string name="error_initialization">Помилка ініціалізації: %1$s</string>
+    <string name="error_initializing_recorder">Помилка при ініціалізації запису</string>
+    <string name="error_media_state">Помилка стану медіа: %1$s</string>
+    <string name="error_mic">Помилка мікрофону</string>
+    <string name="error_permissions">Для роботи додатку необхідні всі дозволи</string>
+    <string name="error_prefix">Помилка: %1$s</string>
+    <string name="error_processing">Помилка при обробці: %1$s</string>
+    <string name="error_receiver_setup">Помилка при налаштуванні receiver: %1$s</string>
+    <string name="error_recording_toggle">Помилка при перемиканні запису: %1$s</string>
+    <string name="error_rounded_corners">Помилка при встановленні заокруглених кутів: %1$s</string>
+    <string name="error_service_start">Помилка при запуску сервісу</string>
+    <string name="error_service_stop">Помилка при зупинці сервісу: %1$s: %2$s</string>
+    <string name="error_speedometer_setup">Помилка при налаштуванні спідометра: %1$s</string>
+    <string name="error_starting_noise_monitoring">Помилка запуску моніторингу шуму</string>
+    <string name="error_state">Помилка стану: %1$s</string>
+    <string name="error_toggle_recording">Помилка при зміні стану запису</string>
+    <string name="error_unexpected">Неочікувана помилка: %1$s</string>
+    <string name="error_update_start">Помилка запуску оновлень: %1$s</string>
+    <string name="export_csv">Експорт CSV</string>
+    <string name="exposed_dropdown_menu_content_description">Показати спадне меню</string>
+    <string name="icon_content_description">Значок вікна</string>
+    <string name="info_icon_description">Інформація про час вимірювання</string>
+    <string name="item_view_role_description">Вкладка</string>
+    <string name="language_settings">Мова</string>
+    <string name="log_date_time_format">%1$s о %2$s</string>
+    <string name="log_noise_value">%1$.1f дБ</string>
+    <string name="logging_background_explanation">Фонове логування працює тільки при увімкненому фоновому моніторингу</string>
+    <string name="logging_disabled_warning">Вимкнення логування очистить всі логи. Продовжити?</string>
+    <string name="logging_disabled_warning_title">Попередження</string>
+    <string name="logging_enabled">Увімкнути логування</string>
+    <string name="logging_explanation">Логування зберігає показники шуму для подальшого перегляду</string>
+    <string name="logging_pause">Призупинити логування</string>
+    <string name="logging_paused">Логування призупинено</string>
+    <string name="logging_resume">Відновити логування</string>
+    <string name="logging_resumed">Логування відновлено</string>
+    <string name="logging_retention_period">Період зберігання логів</string>
+    <string name="logging_sample_frequency">Частота вимірювань</string>
+    <string name="logging_settings_title">Налаштування логування</string>
+    <string name="logs_cleared">Всі логи були очищені</string>
+    <string name="logs_title">Логи шуму</string>
+    <string name="material_clock_toggle_content_description">Виберіть ДП чи ПП</string>
+    <string name="material_hour_24h_suffix">%1$s год</string>
+    <string name="material_hour_selection">Вибрати годину</string>
+    <string name="material_hour_suffix">%1$s год</string>
+    <string name="material_minute_selection">Виберіть хвилини</string>
+    <string name="material_minute_suffix">%1$s хв</string>
+    <string name="material_timepicker_am">дп</string>
+    <string name="material_timepicker_clock_mode_description">Перейти в режим годинника, щоб ввести час.</string>
+    <string name="material_timepicker_hour">Година</string>
+    <string name="material_timepicker_minute">Хвилина</string>
+    <string name="material_timepicker_pm">пп</string>
+    <string name="material_timepicker_select_time">Виберіть час</string>
+    <string name="material_timepicker_text_input_mode_description">Перейти в текстовий режим, щоб ввести час.</string>
+    <string name="max_noise_label">Макс: %.1f</string>
+    <string name="max_noise_time_format">Максимальний рівень шуму (%1$.1f дБ) був зафіксовано %2$s</string>
+    <string name="max_tooltip_prefix">Максимум записано: </string>
+    <string name="maximum">максимального</string>
+    <string name="menu_language">Мова</string>
+    <string name="menu_language_en">English</string>
+    <string name="menu_language_uk">Українська</string>
+    <string name="milliseconds">мс</string>
+    <string name="min_detectable_noise">Мінімальний шум</string>
+    <string name="min_noise_label">Мін: %.1f</string>
+    <string name="min_noise_time_format">Мінімальний рівень шуму (%1$.1f дБ) був зафіксовано %2$s</string>
+    <string name="min_tooltip_prefix">Мінімум записано: </string>
+    <string name="minimum">мінімального</string>
+    <string name="mtrl_badge_numberless_content_description">Нове сповіщення</string>
+    <string name="mtrl_chip_close_icon_content_description">Видалити %1$s</string>
+    <string name="mtrl_exceed_max_badge_number_content_description" ns2:ignore="PluralsCandidate">Нових сповіщень більше ніж %1$d</string>
+    <string name="mtrl_picker_a11y_next_month">Перейти до наступного місяця</string>
+    <string name="mtrl_picker_a11y_prev_month">Перейти до попереднього місяця</string>
+    <string name="mtrl_picker_announce_current_range_selection">Вибрана дата початку – %1$s; вибрана дата завершення – %2$s</string>
+    <string name="mtrl_picker_announce_current_selection">Поточний вибір: %1$s</string>
+    <string name="mtrl_picker_announce_current_selection_none">немає</string>
+    <string name="mtrl_picker_cancel">Скасувати</string>
+    <string name="mtrl_picker_confirm">OK</string>
+    <string name="mtrl_picker_date_header_selected">%1$s</string>
+    <string name="mtrl_picker_date_header_title">Виберіть дату</string>
+    <string name="mtrl_picker_date_header_unselected">Вибрана дата</string>
+    <string name="mtrl_picker_day_of_week_column_header">Стовпець із днями: %1$s</string>
+    <string name="mtrl_picker_end_date_description">Дата завершення: %1$s</string>
+    <string name="mtrl_picker_invalid_format">Недійсний формат.</string>
+    <string name="mtrl_picker_invalid_format_example">Приклад: %1$s</string>
+    <string name="mtrl_picker_invalid_format_use">Використовувати: %1$s</string>
+    <string name="mtrl_picker_invalid_range">Недійсний діапазон.</string>
+    <string name="mtrl_picker_navigate_to_current_year_description">Перейти до поточного року: %1$d</string>
+    <string name="mtrl_picker_navigate_to_year_description">Перейти до %1$d року</string>
+    <string name="mtrl_picker_out_of_range">За межами діапазону: %1$s</string>
+    <string name="mtrl_picker_range_header_only_end_selected">Дата початку – %1$s</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – дата завершення</string>
+    <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
+    <string name="mtrl_picker_range_header_title">Виберіть діапазон дат</string>
+    <string name="mtrl_picker_range_header_unselected">Дата початку – дата завершення</string>
+    <string name="mtrl_picker_save">Зберегти</string>
+    <string name="mtrl_picker_start_date_description">Дата початку: %1$s</string>
+    <string name="mtrl_picker_text_input_date_hint">Дата</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint">Дата завершення</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint">Дата початку</string>
+    <string name="mtrl_picker_text_input_day_abbr">д</string>
+    <string name="mtrl_picker_text_input_month_abbr">м</string>
+    <string name="mtrl_picker_text_input_year_abbr">р</string>
+    <string name="mtrl_picker_today_description">Сьогодні: %1$s</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode">Перейти в режим введення в календарі</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Натисніть, щоб перейти до перегляду календаря</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode">Перейти в режим введення тексту</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Натисніть, щоб перейти до перегляду року</string>
+    <string name="mtrl_timepicker_cancel">Скасувати</string>
+    <string name="mtrl_timepicker_confirm">OK</string>
+    <string name="no">Ні</string>
+    <string name="no_data_available">Дані ще не доступні</string>
+    <string name="no_logs_available">Немає доступних логів</string>
+    <string name="no_logs_for_export">Немає логів для експорту</string>
+    <string name="noise_level">Рівень шуму</string>
+    <string name="noise_level_1">• 0-10 дБ: Ледь чутно</string>
+    <string name="noise_level_2">• 20-30 дБ: Шепіт, тиха кімната</string>
+    <string name="noise_level_3">• 40-50 дБ: Звичайна розмова</string>
+    <string name="noise_level_4">• 60-70 дБ: Офіс, дорожній рух</string>
+    <string name="noise_level_5">• 80-90 дБ: Фен, шумний цех</string>
+    <string name="noise_level_6">• 100-110 дБ: Електроінструменти, гучна музика</string>
+    <string name="noise_level_7">• 120+ дБ: Больовий поріг, ризик пошкодження слуху</string>
+    <string name="noise_level_format">%.1f дБ</string>
+    <string name="noise_level_placeholder">0.0 дБ</string>
+    <string name="noise_reference_close">Закрити</string>
+    <string name="noise_reference_content">Типові рівні шуму:\n\n• 0-10: Ледь чутно\n• 20-30: Шепіт, тиха кімната\n• 40-50: Звичайна розмова\n• 60-70: Офіс, дорожній рух\n• 80-90: Фен, шумний цех\n• 100-110: Електроінструменти, гучна музика\n• 120+: Больовий поріг, ризик пошкодження слуху</string>
+    <string name="noise_reference_title">Референсні значення дБ</string>
+    <string name="noise_sensitivity">Чутливість</string>
+    <string name="noise_smoothing">Згладжування</string>
+    <string name="noise_update_frequency">Частота оновлення</string>
+    <string name="none">Відсутнє</string>
+    <string name="notification_noise_level">Рівень шуму (дБ): %.1f</string>
+    <string name="password_toggle_content_description">Показувати пароль</string>
+    <string name="permission_denied">не надано</string>
+    <string name="permission_granted">надано</string>
+    <string name="power_off">Вимкнути</string>
+    <string name="power_off_confirmation">Ви впевнені, що хочете закрити додаток? Це повністю зупинить моніторинг.</string>
+    <string name="power_off_confirmation_title">Закрити додаток</string>
+    <string name="recorded_at">Зареєстровано:</string>
+    <string name="recording_paused">@string/service_paused</string>
+    <string name="recording_resumed">Запис відновлено</string>
+    <string name="recording_started">Запис розпочато</string>
+    <string name="reset_all">Скинути все</string>
+    <string name="reset_calibration_confirm_message">Ви впевнені, що хочете скинути всі налаштування калібрування до заводських значень?</string>
+    <string name="reset_calibration_confirm_title">Скинути калібрування</string>
+    <string name="reset_calibration_success">Налаштування калібрування скинуто до стандартних</string>
+    <string name="reset_to_default">Скинути</string>
+    <string name="restart">Перезапустити</string>
+    <string name="retention_10h">10 годин</string>
+    <string name="retention_10m">10 хвилин</string>
+    <string name="retention_1h">1 година</string>
+    <string name="retention_1m">1 хвилина</string>
+    <string name="retention_24h">24 години</string>
+    <string name="retention_2h">2 години</string>
+    <string name="retention_3h">3 години</string>
+    <string name="retention_5h">5 годин</string>
+    <string name="retention_5m">5 хвилин</string>
+    <string name="sample_rate_05s">0.5 секунди</string>
+    <string name="sample_rate_10s">10 секунд</string>
+    <string name="sample_rate_1s">1 секунда</string>
+    <string name="sample_rate_5s">5 секунд</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"Пошук"</string>
+    <string name="seconds">сек</string>
+    <string name="service_paused">Сервіс призупинено</string>
+    <string name="service_running">Сервіс працює</string>
+    <string name="service_starting">Запуск сервісу...</string>
+    <string name="service_stopped">Сервіс зупинено</string>
+    <string name="setting_up_speedometer">Налаштування спідометра...</string>
+    <string name="settings_title">Налаштування</string>
+    <string name="sort">Сортувати</string>
+    <string name="sort_by">Сортувати за</string>
+    <string name="sort_noise_ascending">Від найтихішого</string>
+    <string name="sort_noise_descending">Від найгучнішого</string>
+    <string name="sort_time">За часом (за замовчуванням)</string>
+    <string name="speedometer_info_description">Інформація про рівні шуму</string>
+    <string name="speedometer_setup_success">Налаштування спідометра завершено успішно</string>
+    <string name="stats_reset">Статистику скинуто</string>
+    <string name="status">Статус</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="theme_dark">Темна</string>
+    <string name="theme_light">Світла</string>
+    <string name="theme_settings">Налаштування теми</string>
+    <string name="theme_system">Системна</string>
+    <string name="too_many_errors_stopping">Забагато помилок, зупиняємо моніторинг шуму</string>
+    <string name="tooltip_shown_for">Снекбар показано для %1$s значення</string>
+    <string name="ukrainian">Українська</string>
+    <string name="view_logs">Переглянути логи</string>
+    <string name="waiting_permissions">Очікування дозволів...</string>
+    <string name="yes">Так</string>
+</resources>

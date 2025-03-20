@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.app.noiselevelmonitor.app-mergeReleaseResources-30:/values-night-v23/values-night-v23.xml",
+            "map": [
+                {
+                    "source": "/Users/IS/Desktop/Test/app/src/main/res/values-night-v23/themes.xml",
+                    "from": {
+                        "startLines": "26,2",
+                        "startColumns": "4,4",
+                        "startOffsets": "1572,55",
+                        "endLines": "34,23",
+                        "endColumns": "12,12",
+                        "endOffsets": "2113,1495"
+                    },
+                    "to": {
+                        "startLines": "2,11",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,601",
+                        "endLines": "10,32",
+                        "endColumns": "12,12",
+                        "endOffsets": "596,1978"
+                    }
+                }
+            ]
+        }
+    ]
+}

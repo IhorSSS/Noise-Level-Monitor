@@ -1,0 +1,231 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.app.noiselevelmonitor"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+11-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:6:5-71
+11-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:6:22-68
+12    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+12-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:7:5-77
+12-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:7:22-74
+13    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+13-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:8:5-88
+13-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:8:22-85
+14    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+14-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:9:5-77
+14-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:9:22-74
+15    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+15-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:10:5-81
+15-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:10:22-78
+16    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+16-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:11:5-79
+16-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:11:22-76
+17    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+17-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:12:5-95
+17-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:12:22-92
+18    <uses-permission android:name="android.permission.WAKE_LOCK" />
+18-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:13:5-68
+18-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:13:22-65
+19
+20    <permission
+20-->[androidx.core:core:1.9.0] /Users/IS/.gradle/caches/8.11.1/transforms/531a95774b29046aeed5389b706b1311/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+21        android:name="com.app.noiselevelmonitor.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+21-->[androidx.core:core:1.9.0] /Users/IS/.gradle/caches/8.11.1/transforms/531a95774b29046aeed5389b706b1311/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+22        android:protectionLevel="signature" />
+22-->[androidx.core:core:1.9.0] /Users/IS/.gradle/caches/8.11.1/transforms/531a95774b29046aeed5389b706b1311/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+23
+24    <uses-permission android:name="com.app.noiselevelmonitor.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+24-->[androidx.core:core:1.9.0] /Users/IS/.gradle/caches/8.11.1/transforms/531a95774b29046aeed5389b706b1311/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+24-->[androidx.core:core:1.9.0] /Users/IS/.gradle/caches/8.11.1/transforms/531a95774b29046aeed5389b706b1311/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+25
+26    <application
+26-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:15:5-78:19
+27        android:name="com.app.noiselevelmonitor.NoiseMonitorApplication"
+27-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:16:9-48
+28        android:allowBackup="true"
+28-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:17:9-35
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.9.0] /Users/IS/.gradle/caches/8.11.1/transforms/531a95774b29046aeed5389b706b1311/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+30        android:dataExtractionRules="@xml/data_extraction_rules"
+30-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:18:9-65
+31        android:extractNativeLibs="true"
+32        android:fullBackupContent="@xml/backup_rules"
+32-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:19:9-54
+33        android:icon="@mipmap/ic_launcher"
+33-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:20:9-43
+34        android:label="@string/app_name"
+34-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:21:9-41
+35        android:roundIcon="@mipmap/ic_launcher_round"
+35-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:22:9-54
+36        android:supportsRtl="true"
+36-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:23:9-35
+37        android:theme="@style/Theme.NoiseLevelMonitor" >
+37-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:24:9-55
+38        <activity
+38-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:27:9-35:20
+39            android:name="com.app.noiselevelmonitor.MainActivity"
+39-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:28:13-41
+40            android:configChanges="orientation|screenSize|locale|layoutDirection"
+40-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:30:13-82
+41            android:exported="true" >
+41-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:29:13-36
+42            <intent-filter>
+42-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:31:13-34:29
+43                <action android:name="android.intent.action.MAIN" />
+43-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:32:17-69
+43-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:32:25-66
+44
+45                <category android:name="android.intent.category.LAUNCHER" />
+45-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:33:17-77
+45-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:33:27-74
+46            </intent-filter>
+47        </activity>
+48        <activity
+48-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:37:9-42:40
+49            android:name="com.app.noiselevelmonitor.SettingsActivity"
+49-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:38:13-45
+50            android:exported="false"
+50-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:42:13-37
+51            android:label="@string/settings_title"
+51-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:39:13-51
+52            android:parentActivityName="com.app.noiselevelmonitor.MainActivity"
+52-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:40:13-55
+53            android:theme="@style/Theme.NoiseLevelMonitor" />
+53-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:41:13-59
+54        <activity
+54-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:44:9-47:40
+55            android:name="com.app.noiselevelmonitor.NoiseLogsActivity"
+55-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:45:13-46
+56            android:exported="false"
+56-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:47:13-37
+57            android:parentActivityName="com.app.noiselevelmonitor.MainActivity" />
+57-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:46:13-55
+58
+59        <service
+59-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:49:9-54:58
+60            android:name="com.app.noiselevelmonitor.NoiseService"
+60-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:50:13-41
+61            android:configChanges="locale|orientation|screenSize"
+61-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:51:13-66
+62            android:enabled="true"
+62-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:52:13-35
+63            android:exported="false"
+63-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:53:13-37
+64            android:foregroundServiceType="microphone" />
+64-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:54:13-55
+65
+66        <receiver
+66-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:56:9-66:20
+67            android:name="com.app.noiselevelmonitor.BootReceiver"
+67-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:57:13-41
+68            android:enabled="true"
+68-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:58:13-35
+69            android:exported="true"
+69-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:59:13-36
+70            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+70-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:60:13-75
+71            <intent-filter>
+71-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:61:13-65:29
+72                <action android:name="android.intent.action.BOOT_COMPLETED" />
+72-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:62:17-79
+72-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:62:25-76
+73                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+73-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:63:17-82
+73-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:63:25-79
+74
+75                <category android:name="android.intent.category.DEFAULT" />
+75-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:64:17-76
+75-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:64:27-73
+76            </intent-filter>
+77        </receiver>
+78
+79        <provider
+80            android:name="androidx.core.content.FileProvider"
+80-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:69:13-62
+81            android:authorities="com.app.noiselevelmonitor.fileprovider"
+81-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:70:13-64
+82            android:exported="false"
+82-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:71:13-37
+83            android:grantUriPermissions="true" >
+83-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:72:13-47
+84            <meta-data
+84-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:73:13-75:54
+85                android:name="android.support.FILE_PROVIDER_PATHS"
+85-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:74:17-67
+86                android:resource="@xml/file_paths" />
+86-->/Users/IS/Desktop/Test/app/src/main/AndroidManifest.xml:75:17-51
+87        </provider>
+88        <provider
+88-->[androidx.emoji2:emoji2:1.2.0] /Users/IS/.gradle/caches/8.11.1/transforms/8503265eba156f8d4a18fe4e6a03036e/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+89            android:name="androidx.startup.InitializationProvider"
+89-->[androidx.emoji2:emoji2:1.2.0] /Users/IS/.gradle/caches/8.11.1/transforms/8503265eba156f8d4a18fe4e6a03036e/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+90            android:authorities="com.app.noiselevelmonitor.androidx-startup"
+90-->[androidx.emoji2:emoji2:1.2.0] /Users/IS/.gradle/caches/8.11.1/transforms/8503265eba156f8d4a18fe4e6a03036e/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+91            android:exported="false" >
+91-->[androidx.emoji2:emoji2:1.2.0] /Users/IS/.gradle/caches/8.11.1/transforms/8503265eba156f8d4a18fe4e6a03036e/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+92            <meta-data
+92-->[androidx.emoji2:emoji2:1.2.0] /Users/IS/.gradle/caches/8.11.1/transforms/8503265eba156f8d4a18fe4e6a03036e/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+93                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+93-->[androidx.emoji2:emoji2:1.2.0] /Users/IS/.gradle/caches/8.11.1/transforms/8503265eba156f8d4a18fe4e6a03036e/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+94                android:value="androidx.startup" />
+94-->[androidx.emoji2:emoji2:1.2.0] /Users/IS/.gradle/caches/8.11.1/transforms/8503265eba156f8d4a18fe4e6a03036e/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+95            <meta-data
+95-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/IS/.gradle/caches/8.11.1/transforms/707868d848f1629061fb0c70ac947655/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
+96                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+96-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/IS/.gradle/caches/8.11.1/transforms/707868d848f1629061fb0c70ac947655/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
+97                android:value="androidx.startup" />
+97-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/IS/.gradle/caches/8.11.1/transforms/707868d848f1629061fb0c70ac947655/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
+98            <meta-data
+98-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+99                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+99-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+100                android:value="androidx.startup" />
+100-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+101        </provider>
+102
+103        <receiver
+103-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+104            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+104-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+105            android:directBootAware="false"
+105-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+106            android:enabled="true"
+106-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+107            android:exported="true"
+107-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+108            android:permission="android.permission.DUMP" >
+108-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+109            <intent-filter>
+109-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+110                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+110-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+110-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+111            </intent-filter>
+112            <intent-filter>
+112-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+113                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+114            </intent-filter>
+115            <intent-filter>
+115-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+116                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+116-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+116-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+117            </intent-filter>
+118            <intent-filter>
+118-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+119                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+119-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+119-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/IS/.gradle/caches/8.11.1/transforms/535eba2e405931daff8105f2226cb6ec/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+120            </intent-filter>
+121        </receiver>
+122    </application>
+123
+124</manifest>

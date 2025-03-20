@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.9.0" type="conditional_incidents">
+
+    <incident
+        id="InlinedApi"
+        severity="warning"
+        message="">
+        <fix-data minSdk="21-∞" requiresApi="28-∞"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/MainActivity.java"
+            line="478"
+            column="13"
+            startOffset="20284"
+            endLine="478"
+            endColumn="51"
+            endOffset="20322"/>
+        <map>
+            <entry
+                name="message"
+                string="Field requires API level 28 (current min is %1$s): `android.Manifest.permission#FOREGROUND_SERVICE`"/>
+            <api-levels id="minSdk"
+                value="21-∞"/>
+            <entry
+                name="name"
+                string="FOREGROUND_SERVICE"/>
+            <entry
+                name="owner"
+                string="android.Manifest.permission"/>
+            <api-levels id="requiresApi"
+                value="28-∞"/>
+        </map>
+    </incident>
+
+    <incident
+        id="InlinedApi"
+        severity="warning"
+        message="">
+        <fix-data minSdk="21-∞" requiresApi="33-∞"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/MainActivity.java"
+            line="479"
+            column="13"
+            startOffset="20336"
+            endLine="479"
+            endColumn="51"
+            endOffset="20374"/>
+        <map>
+            <entry
+                name="message"
+                string="Field requires API level 33 (current min is %1$s): `android.Manifest.permission#POST_NOTIFICATIONS`"/>
+            <api-levels id="minSdk"
+                value="21-∞"/>
+            <entry
+                name="name"
+                string="POST_NOTIFICATIONS"/>
+            <entry
+                name="owner"
+                string="android.Manifest.permission"/>
+            <api-levels id="requiresApi"
+                value="33-∞"/>
+        </map>
+    </incident>
+
+    <incident
+        id="InlinedApi"
+        severity="warning"
+        message="">
+        <fix-data minSdk="21-∞" requiresApi="23-∞"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/MainActivity.java"
+            line="533"
+            column="38"
+            startOffset="22826"
+            endLine="533"
+            endColumn="90"
+            endOffset="22878"/>
+        <map>
+            <entry
+                name="message"
+                string="Field requires API level 23 (current min is %1$s): `android.provider.Settings#ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`"/>
+            <api-levels id="minSdk"
+                value="21-∞"/>
+            <entry
+                name="name"
+                string="ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+            <entry
+                name="owner"
+                string="android.provider.Settings"/>
+            <api-levels id="requiresApi"
+                value="23-∞"/>
+        </map>
+    </incident>
+
+    <incident
+        id="InlinedApi"
+        severity="warning"
+        message="">
+        <fix-data minSdk="21-∞" requiresApi="28-∞"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/MainActivity.java"
+            line="1911"
+            column="78"
+            startOffset="85313"
+            endLine="1911"
+            endColumn="124"
+            endOffset="85359"/>
+        <map>
+            <entry
+                name="message"
+                string="Field requires API level 28 (current min is %1$s): `android.Manifest.permission#FOREGROUND_SERVICE`"/>
+            <api-levels id="minSdk"
+                value="21-∞"/>
+            <entry
+                name="name"
+                string="FOREGROUND_SERVICE"/>
+            <entry
+                name="owner"
+                string="android.Manifest.permission"/>
+            <api-levels id="requiresApi"
+                value="28-∞"/>
+        </map>
+    </incident>
+
+    <incident
+        id="InlinedApi"
+        severity="warning"
+        message="">
+        <fix-data minSdk="29-∞" requiresApi="30-∞"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/NoiseService.java"
+            line="593"
+            column="74"
+            startOffset="25378"
+            endLine="593"
+            endColumn="120"
+            endOffset="25424"/>
+        <map>
+            <entry
+                name="message"
+                string="Field requires API level 30 (current min is %1$s): `android.content.pm.ServiceInfo#FOREGROUND_SERVICE_TYPE_MICROPHONE`"/>
+            <api-levels id="minSdk"
+                value="29-∞"/>
+            <entry
+                name="name"
+                string="FOREGROUND_SERVICE_TYPE_MICROPHONE"/>
+            <entry
+                name="owner"
+                string="android.content.pm.ServiceInfo"/>
+            <api-levels id="requiresApi"
+                value="30-∞"/>
+        </map>
+    </incident>
+
+    <incident
+        id="NotificationPermission"
+        severity="error"
+        message="When targeting Android 13 or higher, posting a permission requires holding the `POST_NOTIFICATIONS` permission">
+        <fix-data missing="android.permission.POST_NOTIFICATIONS"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/NoiseService.java"
+            line="601"
+            column="13"
+            startOffset="25723"
+            endLine="601"
+            endColumn="80"
+            endOffset="25790"/>
+    </incident>
+
+    <incident
+        id="NotificationPermission"
+        severity="error"
+        message="When targeting Android 13 or higher, posting a permission requires holding the `POST_NOTIFICATIONS` permission">
+        <fix-data missing="android.permission.POST_NOTIFICATIONS"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/NoiseService.java"
+            line="623"
+            column="13"
+            startOffset="26594"
+            endLine="623"
+            endColumn="80"
+            endOffset="26661"/>
+    </incident>
+
+    <incident
+        id="BatteryLife"
+        severity="warning"
+        message="Use of `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` violates the Play Store Content Policy regarding acceptable use cases, as described in https://developer.android.com/training/monitoring-device-state/doze-standby.html">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/MainActivity.java"
+            line="533"
+            column="47"
+            startOffset="22835"
+            endLine="533"
+            endColumn="90"
+            endOffset="22878"/>
+        <map>
+            <condition targetGE="23"/>
+        </map>
+    </incident>
+
+    <incident
+        id="UnspecifiedRegisterReceiverFlag"
+        severity="error"
+        message="`noiseReceiver` is missing `RECEIVER_EXPORTED` or `RECEIVER_NOT_EXPORTED` flag for unprotected broadcasts registered for com.app.noiselevelmonitor.NOISE_UPDATE">
+        <fix-data/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/app/noiselevelmonitor/MainActivity.java"
+            line="401"
+            column="17"
+            startOffset="17011"
+            endLine="401"
+            endColumn="56"
+            endOffset="17050"/>
+        <map>
+            <entry
+                name="hasUnprotected"
+                boolean="true"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_info_circle.xml"
+            line="6"
+            column="19"
+            startOffset="199"
+            endLine="6"
+            endColumn="43"
+            endOffset="223"/>
+        <map>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_info_circle.xml"
+            line="8"
+            column="28"
+            startOffset="263"
+            endLine="8"
+            endColumn="48"
+            endOffset="283"/>
+        <map>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_language.xml"
+            line="8"
+            column="28"
+            startOffset="258"
+            endLine="8"
+            endColumn="52"
+            endOffset="282"/>
+        <map>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_power_off.xml"
+            line="6"
+            column="19"
+            startOffset="199"
+            endLine="6"
+            endColumn="43"
+            endOffset="223"/>
+        <map>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_power_off.xml"
+            line="8"
+            column="28"
+            startOffset="263"
+            endLine="8"
+            endColumn="48"
+            endOffset="283"/>
+        <map>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_reset.xml"
+            line="7"
+            column="19"
+            startOffset="238"
+            endLine="7"
+            endColumn="43"
+            endOffset="262"/>
+        <map>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_sort.xml"
+            line="6"
+            column="19"
+            startOffset="199"
+            endLine="6"
+            endColumn="43"
+            endOffset="223"/>
+        <map>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_sort.xml"
+            line="8"
+            column="28"
+            startOffset="263"
+            endLine="8"
+            endColumn="48"
+            endOffset="283"/>
+        <map>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; `SDK_INT` is always >= 31">
+        <fix-replace
+            description="Delete tools:targetApi"
+            replacement=""
+            priority="0">
+            <range
+                file="${:app*debug*MAIN*sourceProvider*0*manifest*0}"
+                startOffset="1293"
+                endOffset="1313"/>
+        </fix-replace>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*manifest*0}"
+            line="25"
+            column="9"
+            startOffset="1293"
+            endLine="25"
+            endColumn="29"
+            endOffset="1313"/>
+        <map>
+            <condition minGE="31-∞"/>
+        </map>
+    </incident>
+
+</incidents>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Logging sample frequency options -->
+    <string-array name="logging_sample_frequencies">
+        <item>@string/sample_rate_05s</item>
+        <item>@string/sample_rate_1s</item>
+        <item>@string/sample_rate_5s</item>
+        <item>@string/sample_rate_10s</item>
+    </string-array>
+
+    <!-- Logging retention period options -->
+    <string-array name="logging_retention_periods">
+        <item>@string/retention_1m</item>
+        <item>@string/retention_5m</item>
+        <item>@string/retention_10m</item>
+        <item>@string/retention_1h</item>
+        <item>@string/retention_2h</item>
+        <item>@string/retention_3h</item>
+        <item>@string/retention_5h</item>
+        <item>@string/retention_10h</item>
+        <item>@string/retention_24h</item>
+    </string-array>
+</resources> 
